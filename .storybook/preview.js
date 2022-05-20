@@ -8,4 +8,22 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  // Add Custom Background
+  backgrounds: {
+    default: 'bgWhite',
+    values: [
+      {
+        name: 'bgWhite',
+        value: '#fafafa',
+      },
+      {
+        name: 'white',
+        value: '#FFFFFF',
+      },
+      {
+        name: 'black',
+        value: '#212121',
+      },
+    ],
+  },
 }
