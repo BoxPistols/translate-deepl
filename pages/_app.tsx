@@ -1,9 +1,14 @@
+import { AppProps } from 'next/app'
+import { ThemeProvider } from '@mui/material'
+import { theme } from '../theme'
 import 'styles/globals.css'
-// import 'components/SampleButton/index.css';
-// import { ThemeProvider } from "@mui/material/styles";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
 
 export default MyApp
