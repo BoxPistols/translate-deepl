@@ -5,7 +5,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": false, // default = false
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
