@@ -12,7 +12,7 @@
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "sb": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "build-storybook -s public"
+    "build-sb": "build-storybook -s public"
   },
   "dependencies": {
     "next": "12.1.6",
