@@ -1,14 +1,8 @@
 {
-  "locales": [
-    "ja",
-    "en",
-    "ko"
-  ],
+  "locales": ["ja", "en", "ko"],
   "defaultLocale": "ja",
   "localeDetection": false,
   "pages": {
-    "*": [
-      "lang"
-    ]
+    "*": ["lang"]
   }
 }

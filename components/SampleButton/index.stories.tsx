@@ -1,7 +1,7 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { SampleButton } from '.';
+import { SampleButton } from '.'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -10,29 +10,31 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof SampleButton>;
+} as ComponentMeta<typeof SampleButton>
 
-const Template: ComponentStory<typeof SampleButton> = (args) => <SampleButton {...args} />;
+const Template: ComponentStory<typeof SampleButton> = (args) => (
+  <SampleButton {...args} />
+)
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 Primary.args = {
   primary: true,
   label: 'Button',
-};
+}
 
-export const Secondary = Template.bind({});
+export const Secondary = Template.bind({})
 Secondary.args = {
   label: 'Button',
-};
+}
 
-export const Large = Template.bind({});
+export const Large = Template.bind({})
 Large.args = {
   size: 'large',
   label: 'Button',
-};
+}
 
-export const Small = Template.bind({});
+export const Small = Template.bind({})
 Small.args = {
   size: 'small',
   label: 'Button',
-};
+}
