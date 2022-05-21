@@ -19,7 +19,13 @@ exports[`Home renders a heading 1`] = `
         </a>
       </h1>
       <h2>
-        DevDev
+        lang:Japanese
+      </h2>
+      <h2>
+        lang:English
+      </h2>
+      <h2>
+        lang:Korean
       </h2>
     </main>
   </div>

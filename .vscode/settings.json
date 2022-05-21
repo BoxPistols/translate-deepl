@@ -12,9 +12,9 @@
   "editor.formatOnSave": true,
   "workbench.activityBar.visible": true,
   "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "SimonSiefke.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "SimonSiefke.prettier-vscode"
   }
 }
