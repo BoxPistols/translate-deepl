@@ -6,4 +6,7 @@
 // module.exports = nextConfig
 
 const nextTranslate = require('next-translate')
-module.exports = nextTranslate()
+module.exports = nextTranslate({
+  defaultLanguage: 'ja',
+  distDir: 'build',
+})
