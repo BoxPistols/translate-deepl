@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { Home } from 'pages/index'
+import Home from 'pages/index'
 // for with language test
 import langJA from '../../locales/ja/lang.json'
 import langEN from '../../locales/en/lang.json'
