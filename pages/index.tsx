@@ -3,6 +3,8 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 // import { SampleButton } from 'components/SampleButton'
 import useTranslation from 'next-translate/useTranslation'
+// MUI
+import { Stack, Button } from '@mui/material'
 
 // export const Home: React.FC = () => {
 export default function Home() {
@@ -21,6 +23,12 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         {/* <SampleButton label='xxx' size='medium' primary /> */}
+
+        <Stack spacing={2} direction="row">
+          <Button variant="text">Text</Button>
+          <Button variant="contained">Contained</Button>
+          <Button variant="outlined">Outlined</Button>
+        </Stack>
 
         <h2>{t('lang:Japanese')}</h2>
         <h2>{t('lang:English')}</h2>

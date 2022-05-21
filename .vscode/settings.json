@@ -15,6 +15,6 @@
     "editor.defaultFormatter": "SimonSiefke.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "SimonSiefke.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }
