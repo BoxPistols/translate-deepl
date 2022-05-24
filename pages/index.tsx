@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import useTranslation from 'next-translate/useTranslation'
 // MUI
 import { Stack, Button } from '@mui/material'
+import ReactHookForm from 'components/ReactHookForm'
 
 // export const Home: React.FC = () => {
 export default function Home() {
@@ -33,6 +34,8 @@ export default function Home() {
         <h2>{t('lang:Japanese')}</h2>
         <h2>{t('lang:English')}</h2>
         <h2>{t('lang:Korean')}</h2>
+
+        <ReactHookForm />
       </main>
     </div>
   )
