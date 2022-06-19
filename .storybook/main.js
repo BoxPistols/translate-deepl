@@ -9,7 +9,6 @@ module.exports = {
   core: {
     builder: '@storybook/builder-webpack5',
   },
-  framework: '@storybook/react',
   // for MUI with Storybook Emotion
   features: {
     emotionAlias: false,
