@@ -1,6 +1,7 @@
 // import Image from 'next/image'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+
 // import { SampleButton } from 'components/SampleButton'
 import useTranslation from 'next-translate/useTranslation'
 // MUI
@@ -24,15 +25,14 @@ export default function Home() {
       <TitleSet
         variant="h2"
         headingText={t('h2 Variant')}
-        subtitleText={t(
-          'lorem lorem ああああああああああああああああああああああああああああああ',
-        )}
+        subtitleText={t('Title Set')}
       />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <h2 className="fs-md">h2 title</h2>
         {/* <SampleButton label='xxx' size='medium' primary /> */}
 
         <Stack spacing={2} direction="row">
