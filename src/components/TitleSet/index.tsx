@@ -1,7 +1,7 @@
+import { ElementType } from 'react'
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 import { SxProps } from '@mui/system'
-import PageTitleWrapper from 'components/PageTitleWrapper'
-import { ElementType } from 'react'
+import { PageTitleWrapper } from '@/components/PageTitleWrapper'
 
 /**
  * 中見出しとサブタイトルをまとめて表示するコンポーネントです。
@@ -47,7 +47,7 @@ interface TitleSetProps {
 }
 
 // 中見出しとサブタイトル
-function TitleSet({
+export const TitleSet = ({
   variant,
   component,
   headingText,
@@ -58,7 +58,7 @@ function TitleSet({
   sxSubTitle,
   sx,
   gutterBottom,
-}: TitleSetProps): JSX.Element {
+}: TitleSetProps) => {
   const theme = useTheme()
   return (
     <>
@@ -110,5 +110,3 @@ function TitleSet({
     </>
   )
 }
-
-export default TitleSet

@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import ReactHookForm from 'components/ReactHookForm'
+import styles from '@/styles/Home.module.css'
+import ReactHookForm from '@/components/ReactHookForm'
 import { Button } from '@mui/material'
 
 export default function Form() {

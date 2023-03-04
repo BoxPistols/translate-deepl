@@ -1,11 +1,10 @@
 // import Image from 'next/image'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../src/styles/Home.module.css'
 // MUI
 import { Button } from '@mui/material'
-import ReactHookForm from 'components/ReactHookForm'
 // components
-import TitleSet from '@/components/TitleSet.tsx'
+import { TitleSet } from '../src/components/TitleSet'
 
 export default function Home() {
   return (
