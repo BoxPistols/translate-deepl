@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*** 追加：リセット
  ** @see: https://coliss.com/articles/build-websites/operation/css/css-reset-for-modern-browser.html
  **/

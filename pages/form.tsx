@@ -1,7 +1,13 @@
+// Next
 import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
-import ReactHookForm from '@/components/ReactHookForm'
+import Link from 'next/link'
+// MUI
 import { Button } from '@mui/material'
+
+// components
+import styles from '@/styles/Home.module.css'
+// ReactHook
+import ReactHookForm from '@/components/ReactHookForm'
 
 export default function Form() {
   return (
@@ -14,10 +20,9 @@ export default function Form() {
 
       <h1 className={styles.title}>Form</h1>
       <ReactHookForm />
-
-      <Button variant="outlined" href="./">
-        Home
-      </Button>
+      <Link href="/" passHref>
+        <Button variant="outlined">Home</Button>
+      </Link>
     </div>
   )
 }
