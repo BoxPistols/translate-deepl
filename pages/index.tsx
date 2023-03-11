@@ -2,10 +2,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
 // MUI
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 // components
 // import { TitleSet } from '../src/components/TitleSet'
 import styles from '../src/styles/Home.module.css'
+import { Translate } from '@/components/Trans'
 
 export default function Home() {
   return (
@@ -24,6 +25,10 @@ export default function Home() {
           headingText={'h2 Variant'}
           subtitleText={'Title Set'}
         /> */}
+        <Box my={2}>
+          <Translate />
+        </Box>
+
         <Link href="/form" passHref>
           <Button variant="outlined">Form</Button>
         </Link>
