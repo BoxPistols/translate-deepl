@@ -1,12 +1,10 @@
 // Next
 import Head from 'next/head'
-import Link from 'next/link'
 // MUI
-import { Box, Button } from '@mui/material'
-// components
-// import { TitleSet } from '../src/components/TitleSet'
-import styles from '../src/styles/Home.module.css'
+import { Box } from '@mui/material'
 import { Translate } from '@/components/Trans'
+import styles from '../src/styles/Home.module.css'
+import { TitleSet } from '@/components/TitleSet'
 
 export default function Home() {
   return (
@@ -17,21 +15,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={`${styles.title} text-4xl	text-gray-800`}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        {/* <TitleSet
-          variant="h2"
-          headingText={'h2 Variant'}
-          subtitleText={'Title Set'}
-        /> */}
+        <TitleSet
+          component="h1"
+          variant="h3"
+          headingText="Deep Translate for i18n & json"
+          subtitleText="日本語から英語に翻訳と同時に、日英セットで各json形式で書き出されます"
+        />
         <Box my={2}>
           <Translate />
         </Box>
-
-        <Link href="/form" passHref>
-          <Button variant="outlined">Form</Button>
-        </Link>
       </main>
     </div>
   )

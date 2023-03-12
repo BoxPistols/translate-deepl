@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-
+import { Box, Button, TextField } from '@mui/material'
 const API = `${process.env.NEXT_PUBLIC_API_KEY}`
 
 export const Translate = () => {
@@ -22,9 +22,10 @@ export const Translate = () => {
     setTranslatedText(data.translations[0].text)
   }
 
-  // const clear = () => {
-  //   return { translatedText: null }
-  // }
+  const clear = () => {
+    setTranslatedText('')
+    setInputText('')
+  }
 
   let capitalize = function (str) {
     if (typeof str !== 'string' || !str) return str
@@ -32,134 +33,151 @@ export const Translate = () => {
   }
   return (
     <div>
-      <input
-        className={styles.input}
-        type="text"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        placeholder="翻訳したい日本語を入れてください"
-      />
-      <button
-        onClick={handleTranslate}
-        style={{ background: '#ccc', margin: '8px 2px', padding: '10px' }}
-      >
-        Translate
-      </button>
+      <Box display="flex" justifyContent="center" sx={{ my: 4 }}>
+        <TextField
+          // id="outlined-basic"
+          label="翻訳したい日本語を入れてください"
+          variant="outlined"
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="翻訳したい日本語を入れてください"
+          sx={{ mr: 1, width: '60%' }}
+        />
+        <Button
+          variant="outlined"
+          size="large"
+          onClick={handleTranslate}
+          sx={{ height: 56, mr: 1 }}
+        >
+          日{' -> '}英 変換
+        </Button>
 
-      {/* <button
-        onClick={clear}
-        style={{ background: '#ccc', margin: '8px 2px', padding: '10px' }}
-      >
-        clear
-      </button> */}
+        <Button
+          variant="outlined"
+          color="secondary"
+          size="small"
+          onClick={clear}
+          sx={{ height: 56 }}
+        >
+          クリア
+        </Button>
+      </Box>
 
-      <div className={styles.head4}>
-        Capitalize{' '}
-        <small style={{ fontSize: '12px' }}>
-          先頭（最初の1文字）を大文字、以降を小文字
-        </small>
-      </div>
-      {/* <p style={{ margin: '8px' }}> */}
-      <p
-        style={{
-          border: '2px solid #ccc',
-          padding: '8px',
-          userSelect: 'all',
-          marginBottom: 16,
-        }}
-      >
-        {'"'}
-        {/* {capitalize. */}
-        {capitalize(translatedText.replace(/\s+/g, ' '))}
-        {'"'}: {'"'}
-        {inputText}
-        {'"'}
-        <br />
-        {'"'}
-        {capitalize(translatedText.replace(/\s+/g, ' '))}
-        {'"'}: {'"'}
-        {capitalize(translatedText.replace(/\s+/g, ' '))}
-        {/* {translatedText} */}
-        {'"'}
-      </p>
+      <Box>
+        <div className={styles.head4}>
+          Capitalize{' '}
+          <small style={{ fontSize: '12px' }}>
+            先頭（最初の1文字）を大文字、以降を小文字
+          </small>
+        </div>
+        {/* <p style={{ margin: '8px' }}> */}
+        <div
+          style={{
+            border: '2px solid #ccc',
+            padding: '8px',
+            userSelect: 'all',
+            marginBottom: 16,
+            marginLeft: 16,
+          }}
+        >
+          {'"'}
+          {/* {capitalize. */}
+          {capitalize(translatedText.replace(/\s+/g, ' '))}
+          {'"'}: {'"'}
+          {inputText}
+          {'"'}
+          <br />
+          {'"'}
+          {capitalize(translatedText.replace(/\s+/g, ' '))}
+          {'"'}: {'"'}
+          {capitalize(translatedText.replace(/\s+/g, ' '))}
+          {/* {translatedText} */}
+          {'"'}
+        </div>
 
-      <div className={styles.head4}>
-        All UpperCamel{' '}
-        <small style={{ fontSize: '12px' }}>単語ごとの先頭大文字</small>
-      </div>
-      <p
-        style={{
-          textTransform: 'capitalize',
-          border: '2px solid #ccc',
-          padding: '8px',
-          userSelect: 'all',
-          marginBottom: 16,
-        }}
-      >
-        {'"'}
-        {/* {capitalize. */}
-        {translatedText.replace(/\s+/g, ' ')}
-        {'"'}: {'"'}
-        {inputText}
-        {'"'}
-        <br />
-        {'"'}
-        {translatedText.replace(/\s+/g, ' ')}
-        {'"'}: {'"'}
-        {translatedText}
-        {'"'}
-      </p>
+        <div className={styles.head4}>
+          All UpperCamel{' '}
+          <small style={{ fontSize: '12px' }}>単語ごとの先頭大文字</small>
+        </div>
+        <div
+          style={{
+            textTransform: 'capitalize',
+            border: '2px solid #ccc',
+            padding: '8px',
+            userSelect: 'all',
+            marginBottom: 16,
+            marginLeft: 16,
+          }}
+        >
+          {'"'}
+          {/* {capitalize. */}
+          {translatedText.replace(/\s+/g, ' ')}
+          {'"'}: {'"'}
+          {inputText}
+          {'"'}
+          <br />
+          {'"'}
+          {translatedText.replace(/\s+/g, ' ')}
+          {'"'}: {'"'}
+          {translatedText}
+          {'"'}
+        </div>
 
-      <div className={styles.head4}>
-        lower-kebabl <small style={{ fontSize: '12px' }}>小文字のケバブ</small>
-      </div>
-      <p
-        style={{
-          textTransform: 'lowercase',
-          border: '2px solid #ccc',
-          padding: '8px',
-          userSelect: 'all',
-          marginBottom: 16,
-        }}
-      >
-        {'"'}
-        {translatedText.replace(/\s+/g, '-')}
-        {'"'}: {'"'}
-        {inputText}
-        {'"'}
-        <br />
-        {'"'}
-        {translatedText.replace(/\s+/g, '-')}
-        {'"'}: {'"'}
-        {translatedText}
-        {'"'}
-      </p>
+        <div className={styles.head4}>
+          lower-kebabl{' '}
+          <small style={{ fontSize: '12px' }}>小文字のケバブ</small>
+        </div>
+        <div
+          style={{
+            textTransform: 'lowercase',
+            border: '2px solid #ccc',
+            padding: '8px',
+            userSelect: 'all',
+            marginBottom: 16,
+            marginLeft: 16,
+          }}
+        >
+          {'"'}
+          {translatedText.replace(/\s+/g, '-')}
+          {'"'}: {'"'}
+          {inputText}
+          {'"'}
+          <br />
+          {'"'}
+          {translatedText.replace(/\s+/g, '-')}
+          {'"'}: {'"'}
+          {translatedText}
+          {'"'}
+        </div>
 
-      <div className={styles.head4}>
-        snake-case{' '}
-        <small style={{ fontSize: '12px' }}>小文字のスネークケース</small>
-      </div>
-      <p
-        style={{
-          textTransform: 'lowercase',
-          border: '2px solid #ccc',
-          padding: '8px',
-          userSelect: 'all',
-          marginBottom: 16,
-        }}
-      >
-        {'"'}
-        {translatedText.replace(/\s+/g, '_')}
-        {'"'}: {'"'}
-        {inputText}
-        {'"'}
-        <br />
-        {'"'}
-        {translatedText.replace(/\s+/g, '_')}
-        {'"'}: {'"'}
-        {translatedText}
-        {'"'}
-      </p>
+        <div className={styles.head4}>
+          snake-case{' '}
+          <small style={{ fontSize: '12px' }}>小文字のスネークケース</small>
+        </div>
+        <div
+          style={{
+            textTransform: 'lowercase',
+            border: '2px solid #ccc',
+            padding: '8px',
+            userSelect: 'all',
+            marginBottom: 16,
+            marginLeft: 16,
+          }}
+        >
+          {'"'}
+          {translatedText.replace(/\s+/g, '_')}
+          {'"'}: {'"'}
+          {inputText}
+          {'"'}
+          <br />
+          {'"'}
+          {translatedText.replace(/\s+/g, '_')}
+          {'"'}: {'"'}
+          {translatedText}
+          {'"'}
+        </div>
+      </Box>
     </div>
   )
 }

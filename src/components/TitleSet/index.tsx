@@ -16,6 +16,7 @@ import { PageTitleWrapper } from '@/components/PageTitleWrapper'
 // INFO: *variantのh1はMainTitleSetでのみ設置可能としたいです
 interface TitleSetProps {
   variant?:
+    | 'h1'
     | 'h2'
     | 'h3'
     | 'h4'
