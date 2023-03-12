@@ -19,6 +19,15 @@
 
 .input {
   border: 1px solid #999;
+  min-width: 300px;
+  padding: 8px 10px;
+  margin: 8px 0;
+}
+
+.head4 {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .footer {
