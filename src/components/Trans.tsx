@@ -27,10 +27,28 @@ export const Translate = () => {
     setInputText('')
   }
 
-  let capitalize = function (str) {
+  let capitalize = function (str: string) {
     if (typeof str !== 'string' || !str) return str
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
   }
+
+  // lowerCamel
+  function toLowerCamelCase(str: string) {
+    if (typeof str !== 'string' || !str) return str
+    // スペース、ダッシュ、アンダースコアを削除し、文字列を単語に分割する
+    const words = str.replace(/[\s-_/\\]+/g, ' ').split(' ')
+    // 各単語の最初の文字を大文字にし、残りを小文字に変換する
+    const camelCaseWords = words.map((word, index) => {
+      const firstLetter =
+        index === 0 ? word[0].toLowerCase() : word[0].toUpperCase()
+      const restOfWord = word.slice(1).toLowerCase()
+      return firstLetter + restOfWord
+    })
+    // 単語を結合して lower CamelCase 文字列を作成する
+    const lowerCamelCaseStr = camelCaseWords.join('')
+    return lowerCamelCaseStr
+  }
+
   return (
     <div>
       <Box display="flex" justifyContent="center" sx={{ my: 4 }}>
@@ -64,6 +82,7 @@ export const Translate = () => {
         </Button>
       </Box>
 
+      {/* Capitalize */}
       <Box>
         <div className={styles.head4}>
           Capitalize{' '}
@@ -96,6 +115,34 @@ export const Translate = () => {
           {'"'}
         </div>
 
+        {/* lowerCamel */}
+        <div className={styles.head4}>
+          lowerCamelCase{' '}
+          <small style={{ fontSize: '12px' }}>先頭小文字のCamelCase</small>
+        </div>
+        <div
+          style={{
+            border: '2px solid #ccc',
+            padding: '8px',
+            userSelect: 'all',
+            marginBottom: 16,
+            marginLeft: 16,
+          }}
+        >
+          {'"'}
+          {toLowerCamelCase(translatedText)}
+          {'"'}: {'"'}
+          {inputText}
+          {'"'}
+          <br />
+          {'"'}
+          {toLowerCamelCase(translatedText)}
+          {'"'}: {'"'}
+          {translatedText}
+          {'"'}
+        </div>
+
+        {/* All UpperCamel */}
         <div className={styles.head4}>
           All UpperCamel{' '}
           <small style={{ fontSize: '12px' }}>単語ごとの先頭大文字</small>
