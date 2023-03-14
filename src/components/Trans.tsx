@@ -117,8 +117,8 @@ export const Translate = () => {
 
         {/* lowerCamel */}
         <div className={styles.head4}>
-          lowerCamelCase{' '}
-          <small style={{ fontSize: '12px' }}>先頭小文字のCamelCase</small>
+          lowerCamel{' '}
+          <small style={{ fontSize: '12px' }}>先頭小文字のcamelCase</small>
         </div>
         <div
           style={{
