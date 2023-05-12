@@ -1,30 +1,42 @@
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-import { Box, Button, TextField } from '@mui/material'
+import { Box, Button, TextField, Typography } from '@mui/material'
 const API = `${process.env.NEXT_PUBLIC_API_KEY}`
 
 export const Translate = () => {
   const [inputText, setInputText] = useState('')
   const [translatedText, setTranslatedText] = useState('')
+  const [helperText, setHelperText] = useState('')
 
   const handleTranslate = async () => {
-    const response = await fetch(
-      `https://api-free.deepl.com/v2/translate?auth_key=${API}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+    try {
+      const response = await fetch(
+        `https://api-free.deepl.com/v2/translate?auth_key=${API}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `text=${encodeURIComponent(
+            inputText,
+          )}&source=JA&target_lang=EN`,
         },
-        body: `text=${encodeURIComponent(inputText)}&source=JA&target_lang=EN`,
-      },
-    )
-    const data = await response.json()
-    setTranslatedText(data.translations[0].text)
+      )
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+      const data = await response.json()
+      setTranslatedText(data.translations[0].text)
+    } catch (error) {
+      console.log(error)
+      setHelperText('翻訳に失敗しました。もう一度お試しください。')
+    }
   }
 
   const clear = () => {
     setTranslatedText('')
     setInputText('')
+    setHelperText('')
   }
 
   let capitalize = function (str: string) {
@@ -51,35 +63,63 @@ export const Translate = () => {
 
   return (
     <div>
-      <Box display="flex" justifyContent="center" sx={{ my: 4 }}>
-        <TextField
-          // id="outlined-basic"
-          label="翻訳したい日本語を入れてください"
-          variant="outlined"
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="翻訳したい日本語を入れてください"
-          sx={{ mr: 1, width: '60%' }}
-        />
-        <Button
-          variant="outlined"
-          size="large"
-          onClick={handleTranslate}
-          sx={{ height: 56, mr: 1 }}
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ my: 4 }}
+      >
+        <Box
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          sx={{ width: '100%' }}
         >
-          日{' -> '}英 変換
-        </Button>
+          <Box>
+            <TextField
+              // id="outlined-basic"
+              label="翻訳したい日本語を入れてください"
+              variant="outlined"
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder="翻訳したい日本語を入れてください"
+              sx={{ mr: 1, width: '60%' }}
+            />
 
-        <Button
-          variant="outlined"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          sx={{ height: 56 }}
-        >
-          クリア
-        </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              onClick={handleTranslate}
+              sx={{ height: 56, mr: 1 }}
+            >
+              日{' -> '}英 変換
+            </Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={clear}
+              sx={{ height: 56 }}
+            >
+              クリア
+            </Button>
+          </Box>
+          {/* helper */}
+          <Box>
+            <Typography
+              variant="caption"
+              ml={1}
+              sx={{
+                '&.MuiTypography-root': {
+                  color: 'crimson',
+                },
+              }}
+            >
+              {helperText}
+            </Typography>
+          </Box>
+        </Box>
       </Box>
 
       {/* Capitalize */}
