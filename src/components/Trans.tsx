@@ -8,17 +8,28 @@ export const Translate = () => {
   const [translatedText, setTranslatedText] = useState('')
   const [helperText, setHelperText] = useState('')
 
+  // 翻訳 API を叩く fetch 関数 async/await を使う
   const handleTranslate = async () => {
+    if (!inputText) {
+      setHelperText('翻訳したい日本語を入れてください。')
+      return
+    }
+    setHelperText('')
+
     try {
+      // fetch 関数を使って API を叩く
       const response = await fetch(
         `https://api-free.deepl.com/v2/translate?auth_key=${API}`,
         {
+          // fetch 関数の第二引数にオプションを指定する
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
+          // body には、翻訳したいテキストを入れる
           body: `text=${encodeURIComponent(
-            inputText,
+            // inputText.replace(/\s+/g, ' ') で、連続する空白を1つの空白に変換する
+            inputText.replace(/\s+/g, ' '),
           )}&source=JA&target_lang=EN`,
         },
       )
@@ -41,6 +52,7 @@ export const Translate = () => {
     setHelperText('')
   }
 
+  // Capitalize 先頭（最初の1文字）を大文字、以降を小文字
   let capitalize = function (str: string) {
     if (typeof str !== 'string' || !str) return str
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
@@ -51,13 +63,18 @@ export const Translate = () => {
     if (typeof str !== 'string' || !str) return str
     // スペース、ダッシュ、アンダースコアを削除し、文字列を単語に分割する
     const words = str.replace(/[\s-_/\\]+/g, ' ').split(' ')
+
+    // 空の単語を削除する
+    const validWords = words.filter((word) => word && word.length > 0)
+
     // 各単語の最初の文字を大文字にし、残りを小文字に変換する
-    const camelCaseWords = words.map((word, index) => {
+    const camelCaseWords = validWords.map((word, index) => {
       const firstLetter =
         index === 0 ? word[0].toLowerCase() : word[0].toUpperCase()
       const restOfWord = word.slice(1).toLowerCase()
       return firstLetter + restOfWord
     })
+
     // 単語を結合して lower CamelCase 文字列を作成する
     const lowerCamelCaseStr = camelCaseWords.join('')
     return lowerCamelCaseStr
