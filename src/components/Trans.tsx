@@ -22,9 +22,11 @@ export const Translate = () => {
           )}&source=JA&target_lang=EN`,
         },
       )
+
       if (!response.ok) {
         throw new Error('Network response was not ok')
       }
+
       const data = await response.json()
       setTranslatedText(data.translations[0].text)
     } catch (error) {
