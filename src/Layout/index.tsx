@@ -1,3 +1,4 @@
+// Note: Base Layout
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 import { FC, ReactNode } from 'react'
