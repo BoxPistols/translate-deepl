@@ -1,12 +1,5 @@
 import { useState } from 'react'
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  alpha,
-  useTheme,
-} from '@mui/material'
+import { Box, Button, Paper, TextField, Typography } from '@mui/material'
 import {
   capitalize,
   toAllLowerCase,
@@ -19,7 +12,6 @@ import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
 import TextBlock from './TextBlock'
-import { grey } from '@mui/material/colors'
 
 export const Translate = () => {
   const [inputText, setInputText] = useState('')
@@ -51,31 +43,32 @@ export const Translate = () => {
     setHelperText('')
   }
 
-  const theme = useTheme()
+  // const theme = useTheme()
   return (
     <>
-      <FlexBox fx jc_c ai_c my={4}>
-        <FlexBox fx jc_c fd_c sx={{ width: '100%' }}>
+      <Paper
+        elevation={4}
+        sx={{
+          p: 2,
+          borderRadius: 2,
+          mb: 3,
+        }}
+      >
+        <FlexBox fx jc_c fd_c my={1}>
           <FlexBox
             fx
             jc_c
-            ai_c
-            gap={1}
-            p={1}
-            width="100%"
-            border={'2px solid' + theme.palette.info.light}
             sx={{
-              // border: '1px solid ' + theme.palette.primary.light,
-              // backgroundColor:
-              //   theme.palette.mode === 'dark' ? grey[800] : grey[50],
-              borderRadius: 1,
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
               alignItems: 'stretch',
+              gap: 1,
             }}
           >
             <TextField
-              // id="outlined-basic"
+              id="outlined-basic"
               label="翻訳したい日本語を入れてください"
-              // variant="outlined"
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
@@ -87,9 +80,8 @@ export const Translate = () => {
             <Button
               variant="contained"
               size="small"
-              // size="large"
               onClick={handleTranslate}
-              // sx={{ height: 56, mr: 1 }}
+              sx={{ minWidth: 120 }}
             >
               日{' -> '}英 変換
             </Button>
@@ -98,29 +90,43 @@ export const Translate = () => {
               color="secondary"
               size="small"
               onClick={clear}
-              // sx={{ height: 56 }}
+              sx={{ minWidth: 80 }}
             >
               クリア
             </Button>
           </FlexBox>
           {/* helper */}
-          <Box>
-            <Typography
-              variant="caption"
-              ml={1}
-              sx={{
-                '&.MuiTypography-root': {
-                  color: 'crimson',
-                },
-              }}
-            >
-              {helperText}
-            </Typography>
-          </Box>
+          {helperText && (
+            <Box>
+              <Typography
+                variant="caption"
+                ml={1}
+                sx={{
+                  '&.MuiTypography-root': {
+                    color: 'crimson',
+                  },
+                }}
+              >
+                {helperText}
+              </Typography>
+            </Box>
+          )}
         </FlexBox>
-      </FlexBox>
+      </Paper>
 
-      <Box>
+      {/* 翻訳結果 */}
+      <Paper
+        elevation={4}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'stretch',
+          flexDirection: 'column',
+          gap: 1,
+          p: 3,
+          borderRadius: 2,
+        }}
+      >
         {/* Capitalize */}
         <TextBlock
           title="Capitalize"
@@ -169,7 +175,7 @@ export const Translate = () => {
           result={inputText}
           func={toLowerSnakeCase}
         />
-      </Box>
+      </Paper>
     </>
   )
 }

@@ -2,9 +2,11 @@ import React from 'react'
 import { styled } from '@mui/system'
 import copy from 'copy-to-clipboard'
 import Tooltip from '@mui/material/Tooltip'
+import FlexBox from '@/utils/FlexBox'
 
-const CopyButton = styled('button')(() => ({
-  // backgroundColor: '#f1f1f1',
+const CopyButton = styled('button')(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
   border: 'none',
   padding: '6px 12px',
   fontSize: '12px',
@@ -78,29 +80,38 @@ const TextBlock: React.FC<TextBlockProps> = ({
       <Head4>
         {title} <Small>{subtitle}</Small>
       </Head4>
-      <Container>
+      <Container sx={{ position: 'relative', p: 2 }}>
         {content && result && (
           <>
-            {'"'}
-            {formattedContent}
-            {'"'}: {'"'}
-            {result}
-            {'"'}
-            <br />
-            {'"'}
-            {formattedContent}
-            {'"'}: {'"'}
-            {content}
-            {'"'}
-            <br />
-            {/* {formattedResult} */}
-            {/* <br /> */}
-            {/* {formattedContentOutput} */}
-            <br />
+            <FlexBox>
+              {'"'}
+              {formattedContent}
+              {'"'}: {'"'}
+              {result}
+              {'"'}
+              <br />
+              {'"'}
+              {formattedContent}
+              {'"'}: {'"'}
+              {content}
+              {'"'}
+              {/* {formattedResult} */}
+              {/* {formattedContentOutput} */}
+            </FlexBox>
+
             <Tooltip title="Copied!" open={showTooltip}>
-              <CopyButton onClick={() => handleCopy(result, content)}>
-                Copy to clipboard
-              </CopyButton>
+              <FlexBox
+                sx={{
+                  width: 'fit-content',
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                }}
+              >
+                <CopyButton onClick={() => handleCopy(result, content)}>
+                  Copy clipboard
+                </CopyButton>
+              </FlexBox>
             </Tooltip>
           </>
         )}
