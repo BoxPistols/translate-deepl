@@ -1,13 +1,5 @@
 import { useState } from 'react'
 import { Box, Button, Paper, TextField, Typography } from '@mui/material'
-import {
-  capitalize,
-  toAllLowerCase,
-  toLowerCamelCase,
-  toLowerKebabCase,
-  toLowerSnakeCase,
-  toUpperCamelCase,
-} from '@/utils/stringConverters'
 import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
@@ -133,7 +125,7 @@ export const Translate = () => {
           subtitle="先頭（最初の1文字）を大文字、以降を小文字"
           content={translatedText.replace(/\s+/g, ' ')}
           result={inputText}
-          func={capitalize}
+          transformType="capitalize"
         />
         {/* lowerCamel */}
         <TextBlock
@@ -141,15 +133,15 @@ export const Translate = () => {
           subtitle="先頭小文字のcamelCase"
           content={translatedText}
           result={inputText}
-          func={toLowerCamelCase}
+          transformType="lowerCamelCase"
         />
-        {/* All UpperCamel */}{' '}
+        {/* All UpperCamel */}
         <TextBlock
           title="All UpperCamel"
           subtitle="単語ごとの先頭大文字"
           content={translatedText.replace(/\s+/g, ' ')}
           result={inputText}
-          func={toUpperCamelCase}
+          transformType="upperCamelCase"
         />
         {/* All lower */}
         <TextBlock
@@ -157,7 +149,7 @@ export const Translate = () => {
           subtitle="全て小文字"
           content={translatedText.replace(/\s+/g, ' ')}
           result={inputText}
-          func={toAllLowerCase}
+          transformType="allLowerCase"
         />
         {/* All lower-kebab */}
         <TextBlock
@@ -165,7 +157,7 @@ export const Translate = () => {
           subtitle="小文字のケバブ"
           content={translatedText}
           result={inputText}
-          func={toLowerKebabCase}
+          transformType="kebabCase"
         />
         {/* All lower_snake */}
         <TextBlock
@@ -173,7 +165,7 @@ export const Translate = () => {
           subtitle="小文字のスネーク"
           content={translatedText}
           result={inputText}
-          func={toLowerSnakeCase}
+          transformType="snakeCase"
         />
       </Paper>
     </>
