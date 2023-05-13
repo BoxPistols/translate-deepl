@@ -2,7 +2,7 @@
 import Head from 'next/head'
 // MUI
 import { Box } from '@mui/material'
-import { Translate } from '@/components/Trans'
+import { Translate } from '@/components/Translate'
 import styles from '../src/styles/Home.module.css'
 import { TitleSet } from '@/components/TitleSet'
 
