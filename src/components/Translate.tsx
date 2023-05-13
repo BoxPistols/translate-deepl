@@ -94,7 +94,7 @@ export const Translate = () => {
         </FlexBox>
       </FlexBox>
 
-      <Box color="dimgray">
+      <Box>
         {/* Capitalize */}
         <TextBlock
           title="Capitalize"

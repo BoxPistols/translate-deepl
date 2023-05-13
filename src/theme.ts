@@ -12,7 +12,7 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
         main: '#f50057', // あなたのセカンダリカラー
       },
       background: {
-        default: mode === 'light' ? '#ffffff' : '#303030',
+        default: mode === 'light' ? '#ffffff' : '#2c2c2c',
         paper: mode === 'light' ? '#ffffff' : '#424242',
       },
     },
