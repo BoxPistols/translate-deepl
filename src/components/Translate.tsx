@@ -143,6 +143,14 @@ export const Translate = () => {
           result={inputText}
           transformType="upperCamelCase"
         />
+        {/* UpperCamel_Snake */}
+        <TextBlock
+          title="UpperCamel_Snake"
+          subtitle="先頭大文字のスネーク"
+          content={translatedText}
+          result={inputText}
+          transformType="upperCamelSnake"
+        />
         {/* All lower */}
         <TextBlock
           title="All lower"

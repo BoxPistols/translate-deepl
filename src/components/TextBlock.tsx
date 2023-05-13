@@ -90,7 +90,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
               {'"'}
               {formattedContent}
               {'"'}: {'"'}
-              {content}
+              {content.toLocaleLowerCase()}
               {'"'}
             </FlexBox>
 
