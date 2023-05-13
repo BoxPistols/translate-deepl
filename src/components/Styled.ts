@@ -70,7 +70,7 @@ export const Description = styled.p`
 `
 
 export const Code = styled.pre`
-  background: #fafafa;
+  // background: #fafafa;
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;

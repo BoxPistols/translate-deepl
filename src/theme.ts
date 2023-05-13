@@ -1,14 +1,10 @@
+// theme.ts
 import { createTheme, Theme } from '@mui/material'
 
-export const theme = (mode: 'light' | 'dark'): Theme => {
-  // テキストと背景の色を設定
-  const textColor = mode === 'light' ? '#000000' : '#ffffff'
-  const backgroundColor = mode === 'light' ? '#ffffff' : '#303030'
-
-  // テーマを作成
-  return createTheme({
+export const theme = (mode: 'light' | 'dark'): Theme =>
+  createTheme({
     palette: {
-      mode: mode,
+      mode,
       primary: {
         main: '#3f51b5', // あなたのプライマリカラー
       },
@@ -16,15 +12,8 @@ export const theme = (mode: 'light' | 'dark'): Theme => {
         main: '#f50057', // あなたのセカンダリカラー
       },
       background: {
-        default: backgroundColor,
-        paper: backgroundColor,
+        default: mode === 'light' ? '#ffffff' : '#303030',
+        paper: mode === 'light' ? '#ffffff' : '#424242',
       },
-      text: {
-        primary: textColor,
-        secondary: textColor,
-      },
-      // その他のカラー設定
     },
-    // その他のテーマ設定
   })
-}

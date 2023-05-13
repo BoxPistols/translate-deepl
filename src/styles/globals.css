@@ -59,18 +59,33 @@ select {
 }
 
 /* 本編 */
+/* globals.css */
 html,
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
-  /* color: #234; */
 }
-.MuiTypography-root {
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#__next {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+}
+
+/* .MuiTypography-root {
   color: #234;
-}
+} */
 
 a {
   color: inherit;

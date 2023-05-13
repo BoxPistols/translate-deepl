@@ -1,38 +1,21 @@
+// _app.tsx
 import React from 'react'
-import { AppProps } from 'next/app'
-import CssBaseline from '@mui/material/CssBaseline'
-
-import { ThemeProvider } from '@mui/material'
-import BaseLayout from '@/Layout'
-import '../src/styles/globals.css'
+import { ThemeProvider, CssBaseline } from '@mui/material'
 import { theme } from '@/theme'
+import '@/styles/globals.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('dark')
-
-  React.useEffect(() => {
-    const localTheme = localStorage.getItem('theme')
-    if (localTheme) {
-      setMode(localTheme as 'light' | 'dark')
-    }
-  }, [])
+function MyApp({ Component, pageProps }) {
+  const [mode, setMode] = React.useState<'light' | 'dark'>('light')
 
   const toggleTheme = () => {
-    setMode((prevMode) => {
-      const newMode = prevMode === 'light' ? 'dark' : 'light'
-      localStorage.setItem('theme', newMode)
-      return newMode
-    })
+    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
   }
 
   return (
-    <BaseLayout toggleTheme={toggleTheme} mode={mode}>
+    <ThemeProvider theme={theme(mode)}>
       <CssBaseline />
-
-      <ThemeProvider theme={theme(mode)}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </BaseLayout>
+      <Component {...pageProps} toggleTheme={toggleTheme} />
+    </ThemeProvider>
   )
 }
 

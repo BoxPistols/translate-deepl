@@ -4,7 +4,7 @@ import copy from 'copy-to-clipboard'
 import Tooltip from '@mui/material/Tooltip'
 
 const CopyButton = styled('button')(() => ({
-  backgroundColor: '#f1f1f1',
+  // backgroundColor: '#f1f1f1',
   border: 'none',
   padding: '6px 12px',
   fontSize: '12px',

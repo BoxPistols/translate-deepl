@@ -18,5 +18,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot-labs.showBrushesLenses": true,
-  "github.copilot-labs.showTestGenerationLenses": true
+  "github.copilot-labs.showTestGenerationLenses": true,
+  "github.copilot.inlineSuggest.enable": true
 }

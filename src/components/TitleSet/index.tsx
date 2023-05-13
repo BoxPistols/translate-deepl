@@ -69,7 +69,7 @@ export const TitleSet = ({
           '.MuiPageTitle-wrapper': {
             m: theme.spacing(0),
             p: theme.spacing(0),
-            background: 'transparent',
+            // background: 'transparent',
             boxShadow: 'none',
           },
           ...sx,
