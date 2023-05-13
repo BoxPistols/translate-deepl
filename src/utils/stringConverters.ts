@@ -29,7 +29,7 @@ export const toUpperCamelCase = (str: string) => {
     const restOfWord = word.slice(1).toLowerCase()
     return firstLetter + restOfWord
   })
-  const upperCamelCaseStr = camelCaseWords.join('')
+  const upperCamelCaseStr: string = camelCaseWords.join('')
   return upperCamelCaseStr
 }
 
@@ -41,12 +41,14 @@ export const toAllLowerCase = (str: string) => {
 
 // 文字列をケバブケースに変換する関数を定義する
 export const toLowerKebabCase = (str: string) => {
+  // 文字列が空文字の場合はそのまま返す
   if (typeof str !== 'string' || !str) return str
   return str.replace(/\s+/g, '-')
 }
 
 // 文字列をスネークケースに変換する関数を定義する
 export const toLowerSnakeCase = (str: string) => {
+  // 文字列が空文字の場合はそのまま返す
   if (typeof str !== 'string' || !str) return str
   return str.replace(/\s+/g, '_')
 }

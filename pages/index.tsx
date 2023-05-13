@@ -1,10 +1,21 @@
 import Head from 'next/head'
-import { Box, Button } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Translate } from '@/components/Translate'
 import styles from '../src/styles/Home.module.css'
 import { TitleSet } from '@/components/TitleSet'
+import IconButton from '@mui/material/IconButton'
+import { useTheme } from '@mui/material/styles'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
+import React from 'react'
+import FlexBox from '@/utils/FlexBox'
+
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} })
 
 export default function Home({ toggleTheme }) {
+  const theme = useTheme()
+  const colorMode = React.useContext(ColorModeContext)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,9 +25,35 @@ export default function Home({ toggleTheme }) {
       </Head>
 
       <main className={styles.main}>
-        <Button variant="contained" color="primary" onClick={toggleTheme}>
-          Toggle Theme
-        </Button>
+        <FlexBox
+          onClick={toggleTheme}
+          fx
+          jc_c
+          ai_c
+          sx={{
+            width: '100%',
+            bgcolor: 'background.default',
+            color: 'text.primary',
+            borderRadius: 1,
+            p: 3,
+          }}
+        >
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color="inherit"
+          >
+            {theme.palette.mode === 'dark' ? (
+              <Brightness7Icon />
+            ) : (
+              <Brightness4Icon />
+            )}
+          </IconButton>
+          <Typography variant="caption">
+            {theme.palette.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
+          </Typography>
+        </FlexBox>
+
         <TitleSet
           component="h1"
           variant="h3"

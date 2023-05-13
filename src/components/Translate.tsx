@@ -1,5 +1,12 @@
 import { useState } from 'react'
-import { Box, Button, TextField, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  alpha,
+  useTheme,
+} from '@mui/material'
 import {
   capitalize,
   toAllLowerCase,
@@ -12,6 +19,7 @@ import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
 import TextBlock from './TextBlock'
+import { grey } from '@mui/material/colors'
 
 export const Translate = () => {
   const [inputText, setInputText] = useState('')
@@ -43,27 +51,45 @@ export const Translate = () => {
     setHelperText('')
   }
 
+  const theme = useTheme()
   return (
     <>
       <FlexBox fx jc_c ai_c my={4}>
         <FlexBox fx jc_c fd_c sx={{ width: '100%' }}>
-          <Box>
+          <FlexBox
+            fx
+            jc_c
+            ai_c
+            gap={1}
+            p={1}
+            width="100%"
+            border={'2px solid' + theme.palette.info.light}
+            sx={{
+              // border: '1px solid ' + theme.palette.primary.light,
+              // backgroundColor:
+              //   theme.palette.mode === 'dark' ? grey[800] : grey[50],
+              borderRadius: 1,
+              alignItems: 'stretch',
+            }}
+          >
             <TextField
               // id="outlined-basic"
               label="翻訳したい日本語を入れてください"
-              variant="outlined"
+              // variant="outlined"
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="翻訳したい日本語を入れてください"
-              sx={{ mr: 1, width: '60%' }}
+              sx={{ mr: 0.25, minWidth: '60%', flexGrow: 1 }}
+              size="small"
             />
 
             <Button
-              variant="outlined"
-              size="large"
+              variant="contained"
+              size="small"
+              // size="large"
               onClick={handleTranslate}
-              sx={{ height: 56, mr: 1 }}
+              // sx={{ height: 56, mr: 1 }}
             >
               日{' -> '}英 変換
             </Button>
@@ -72,11 +98,11 @@ export const Translate = () => {
               color="secondary"
               size="small"
               onClick={clear}
-              sx={{ height: 56 }}
+              // sx={{ height: 56 }}
             >
               クリア
             </Button>
-          </Box>
+          </FlexBox>
           {/* helper */}
           <Box>
             <Typography
