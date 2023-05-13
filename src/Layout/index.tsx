@@ -1,30 +1,31 @@
-// Note: Base Layout
-import { Box } from '@mui/material'
-import PropTypes from 'prop-types'
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
+import { IconButton } from '@mui/material'
+import { Brightness4, Brightness7 } from '@mui/icons-material'
 
 interface BaseLayoutProps {
-  children?: ReactNode
+  toggleTheme: () => void
+  children: ReactNode
+  mode: 'light' | 'dark'
 }
 
-const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
+const BaseLayout: React.FC<BaseLayoutProps> = ({
+  children,
+  mode,
+  toggleTheme,
+}) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-      }}
-    >
+    <>
+      <IconButton
+        edge="end"
+        color="inherit"
+        aria-label="mode toggle"
+        onClick={toggleTheme}
+      >
+        {mode === 'light' ? <Brightness4 /> : <Brightness7 />}
+      </IconButton>
       {children}
-    </Box>
+    </>
   )
-}
-
-BaseLayout.propTypes = {
-  children: PropTypes.node,
 }
 
 export default BaseLayout

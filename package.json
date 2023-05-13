@@ -13,6 +13,7 @@
   "dependencies": {
     "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^2.8.10",
+    "@mui/icons-material": "^5.11.16",
     "axios": "0.27.2",
     "copy-to-clipboard": "^3.3.3",
     "next": "12.1.6",
