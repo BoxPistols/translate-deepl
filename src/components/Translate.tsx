@@ -3,7 +3,7 @@ import { Box, Button, Paper, TextField, Typography } from '@mui/material'
 import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
-import TextBlock from './TextBlock'
+import TextBlock from '@/components/TextBlock'
 
 export const Translate = () => {
   const [inputText, setInputText] = useState('')
@@ -35,7 +35,6 @@ export const Translate = () => {
     setHelperText('')
   }
 
-  // const theme = useTheme()
   return (
     <>
       <Paper
@@ -47,17 +46,7 @@ export const Translate = () => {
         }}
       >
         <FlexBox fx jc_c fd_c my={1}>
-          <FlexBox
-            fx
-            jc_c
-            sx={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'stretch',
-              gap: 1,
-            }}
-          >
+          <FlexBox fx jc_c ai_s fw width="100%" gap={1}>
             <TextField
               id="outlined-basic"
               label="翻訳したい日本語を入れてください"
