@@ -11,8 +11,12 @@ import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
 import TextBlock from '@/components/TextBlock'
+import { theme } from '@/theme'
+import { useTheme } from '@mui/material/styles'
 
 export const Translate = () => {
+  const muiTheme = useTheme()
+
   const [inputText, setInputText] = useState('')
   const [translatedText, setTranslatedText] = useState('')
   const [helperText, setHelperText] = useState('')
@@ -108,10 +112,24 @@ export const Translate = () => {
         elevation={4}
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 1,
+          gridTemplateColumns: {
+            xs: '1fr',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(2, 1fr)',
+            xl: 'repeat(3, 1fr)',
+          },
           p: 3,
-          borderRadius: 2,
+          borderRadius: 2, // gridTemplateColumns: 'repeat(1, 1fr)',
+          // [muiTheme.breakpoints.up('md')]: {
+          //   gridTemplateColumns: 'repeat(1, 1fr)',
+          // },
+          // [muiTheme.breakpoints.up('lg')]: {
+          //   gridTemplateColumns: 'repeat(2, 1fr)',
+          // },
+          // [muiTheme.breakpoints.up('xl')]: {
+          //   gridTemplateColumns: 'repeat(3, 1fr)',
+          // },
         }}
       >
         {/* Capitalize */}
