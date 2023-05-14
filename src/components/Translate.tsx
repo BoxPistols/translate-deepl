@@ -11,11 +11,10 @@ import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
 import TextBlock from '@/components/TextBlock'
-import { theme } from '@/theme'
-import { useTheme } from '@mui/material/styles'
+// import { useTheme } from '@mui/material/styles'
 
 export const Translate = () => {
-  const muiTheme = useTheme()
+  // const theme = useTheme()
 
   const [inputText, setInputText] = useState('')
   const [translatedText, setTranslatedText] = useState('')
