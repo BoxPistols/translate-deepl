@@ -1,5 +1,12 @@
 import { useState } from 'react'
-import { Box, Button, Paper, TextField, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  InputLabel,
+  Paper,
+  TextField,
+  Typography,
+} from '@mui/material'
 import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
@@ -48,16 +55,17 @@ export const Translate = () => {
         <FlexBox fx jc_c fd_c my={1}>
           <FlexBox fx jc_c ai_s fw width="100%" gap={1}>
             <TextField
-              id="outlined-basic"
-              label="翻訳したい日本語を入れてください"
+              id="input-trans-word"
+              label={
+                <InputLabel shrink>翻訳したい日本語を入れてください</InputLabel>
+              }
               type="text"
               value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
               placeholder="翻訳したい日本語を入れてください"
-              sx={{ mr: 0.25, minWidth: '60%', flexGrow: 1 }}
               size="small"
+              onChange={(e) => setInputText(e.target.value)}
+              sx={{ mr: 0.25, minWidth: '60%', flexGrow: 1 }}
             />
-
             <Button
               variant="contained"
               size="small"
@@ -99,10 +107,8 @@ export const Translate = () => {
       <Paper
         elevation={4}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'stretch',
-          flexDirection: 'column',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 1,
           p: 3,
           borderRadius: 2,

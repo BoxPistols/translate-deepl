@@ -46,7 +46,7 @@ function ReactHookForm() {
   }
 
   return (
-    <Container maxWidth="sm" sx={{ pt: 5 }}>
+    <Container maxWidth="xl" sx={{ pt: 5 }}>
       <Stack spacing={3}>
         <TextField
           required

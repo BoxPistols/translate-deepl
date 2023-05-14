@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Box, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import { Translate } from '@/components/Translate'
 import styles from '../src/styles/Home.module.css'
 import { TitleSet } from '@/components/TitleSet'
@@ -26,18 +26,14 @@ export default function Home({ toggleTheme }) {
 
       <header>
         <FlexBox
-          onClick={toggleTheme}
           fx
-          // jc_c
           ai_c
-          sx={{
-            width: '100%',
-            bgcolor: 'background.default',
-            justifyContent: 'flex-end',
-            py: 1,
-            px: 2,
-            // height: 44,
-          }}
+          jc_e
+          height={32}
+          pt={2}
+          px={1}
+          width={'100%'}
+          onClick={toggleTheme}
         >
           {/* // ダークモード切り替えボタン */}
           <IconButton
@@ -57,19 +53,21 @@ export default function Home({ toggleTheme }) {
         </FlexBox>
       </header>
 
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <TitleSet
-            component="h1"
-            variant="h3"
-            headingText="Deep Translate for i18n & json"
-            subtitleText="日本語から英語に翻訳と同時に、日英セットで各json形式で書き出されます"
-          />
-          <Box my={2}>
-            <Translate />
-          </Box>
-        </main>
-      </div>
+      <Container maxWidth="xl">
+        <div className={styles.container}>
+          <main className={styles.main}>
+            <TitleSet
+              component="h1"
+              variant="h3"
+              headingText="Deep Translate for i18n & json"
+              subtitleText="日本語から英語に翻訳と同時に、日英セットで各json形式で書き出されます"
+            />
+            <Box my={2}>
+              <Translate />
+            </Box>
+          </main>
+        </div>
+      </Container>
     </>
   )
 }

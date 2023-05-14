@@ -4,12 +4,15 @@ interface FlexBoxProps extends BoxProps {
   fx?: boolean
   ai_c?: boolean
   ai_s?: boolean
+  jc_s?: boolean
   jc_c?: boolean
   jc_fs?: boolean
   jc_e?: boolean
   jc_sp_bw?: boolean
   jc_sp_ar?: boolean
   jc_sp_ec?: boolean
+  jc_sp_ev?: boolean
+  jc_bl?: boolean
   fd_c?: boolean
   fx_r?: boolean
   fw?: boolean
@@ -21,12 +24,15 @@ const FlexBox = ({
   fx,
   ai_c,
   ai_s,
+  jc_s,
   jc_c,
   jc_fs,
   jc_e,
   jc_sp_bw,
   jc_sp_ar,
   jc_sp_ec,
+  jc_sp_ev,
+  jc_bl,
   fd_c,
   fx_r,
   fw,
@@ -39,19 +45,19 @@ const FlexBox = ({
       display={fx ? 'flex' : undefined || 'block'}
       alignItems={ai_c ? 'center' : undefined || ai_s ? 'stretch' : undefined}
       justifyContent={
-        jc_c
+        jc_s
           ? 'flex-start'
-          : undefined || jc_fs
-          ? 'center'
           : undefined || jc_c
-          ? 'flex-end'
+          ? 'center'
           : undefined || jc_e
-          ? 'space-between'
+          ? 'flex-end'
           : undefined || jc_sp_bw
-          ? 'space-around'
+          ? 'space-between'
           : undefined || jc_sp_ar
+          ? 'space-around'
+          : undefined || jc_sp_ev
           ? 'space-evenly'
-          : undefined || jc_sp_ec
+          : undefined || jc_bl
           ? 'baseline'
           : undefined
       }

@@ -81,6 +81,7 @@ export const TitleSet = ({
             justifyContent="space-between"
             alignItems="center"
             sx={{ mb: 1 }}
+            mb={1}
           >
             <Grid item>
               {/* 見出し */}
@@ -89,7 +90,7 @@ export const TitleSet = ({
                 component={component ? component : 'div'}
                 sx={sxHeader}
                 gutterBottom={gutterBottom}
-                style={{ lineHeight: 1.5 }}
+                style={{ lineHeight: 1.3, fontSize: '1.5rem' }}
               >
                 {headingText}
               </Typography>

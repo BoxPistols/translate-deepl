@@ -136,5 +136,37 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
           },
         },
       },
+      MuiContainer: {
+        styleOverrides: {
+          root: {
+            paddingLeft: 0,
+            paddingRight: 0,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            width: '100%',
+            maxWidth: '100%',
+            '@media (min-width: 600px)': {
+              maxWidth: '100%',
+            },
+            '@media (min-width: 960px)': {
+              maxWidth: '100%',
+            },
+            '@media (min-width: 1280px)': {
+              maxWidth: '100%',
+            },
+            '@media (min-width: 1920px)': {
+              maxWidth: '100%',
+            },
+          },
+        },
+      },
+
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            backgroundColor: mode === 'light' ? '#ffffff' : '#212121',
+          },
+        },
+      },
     },
   })

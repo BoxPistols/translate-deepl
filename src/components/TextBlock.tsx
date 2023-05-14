@@ -4,15 +4,7 @@ import copy from 'copy-to-clipboard'
 import Tooltip from '@mui/material/Tooltip'
 import FlexBox from '@/utils/FlexBox'
 import { transformText, TextTransformType } from '@/utils/stringConverters'
-
-const CopyButton = styled('button')(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
-  border: 'none',
-  padding: '6px 12px',
-  fontSize: '12px',
-  cursor: 'pointer',
-}))
+import { Box, Paper } from '@mui/material'
 
 interface TextBlockProps {
   title: string
@@ -23,18 +15,38 @@ interface TextBlockProps {
   noSymbols?: boolean
 }
 
-const Container = styled('div')(() => ({
-  border: '2px solid #ccc',
-  padding: '8px',
-  marginBottom: 16,
-  marginLeft: 16,
+const TextBlockWrapper = styled(Paper)(({ theme }) => ({
+  position: 'relative',
+  borderRadius: '4px',
+  border: '1px solid',
+  borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
+  backgroundColor: theme.palette.mode === 'dark' ? '#212121' : '#fcfcfc',
+  padding: '8px 16px',
+  marginBottom: '8px',
+  '&:last-child': {
+    marginBottom: 0,
+  },
 }))
 
-const Head4 = styled('h4')(() => ({
+const CopyButton = styled('button')(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  border: 'none',
+  padding: '6px 12px',
+  fontSize: '12px',
+  cursor: 'pointer',
+  borderRadius: '4px',
+}))
+
+const Head4 = styled('h4')(({ theme }) => ({
   fontSize: '16px',
   fontWeight: 'bold',
   margin: 0,
-  marginBottom: '8px',
+  marginBottom: '6px',
+  borderBottom: '1px solid ',
+  borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
+  width: 'fit-content',
+  paddingBottom: '2px',
 }))
 
 const Small = styled('small')(() => ({
@@ -74,12 +86,12 @@ const TextBlock: React.FC<TextBlockProps> = ({
 
   return (
     <>
-      <Head4>
-        {title} <Small>{subtitle}</Small>
-      </Head4>
-      <Container sx={{ position: 'relative', p: 2 }}>
+      <TextBlockWrapper>
+        <Head4>
+          {title} <Small>{subtitle}</Small>
+        </Head4>
         {content && result && (
-          <>
+          <Box>
             <FlexBox>
               {'"'}
               {formattedContent}
@@ -104,13 +116,13 @@ const TextBlock: React.FC<TextBlockProps> = ({
                 }}
               >
                 <CopyButton onClick={() => handleCopy(result, content)}>
-                  Copy clipboard
+                  Copy
                 </CopyButton>
               </FlexBox>
             </Tooltip>
-          </>
+          </Box>
         )}
-      </Container>
+      </TextBlockWrapper>
     </>
   )
 }
