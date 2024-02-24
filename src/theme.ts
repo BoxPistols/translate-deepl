@@ -2,7 +2,6 @@
 import { createTheme, Theme } from '@mui/material'
 // colorTokens.ts
 import { colorData } from '@/utils/colorToken'
-import { pink, blue, amber, grey, orange } from '@mui/material/colors'
 
 export const theme = (mode: 'light' | 'dark'): Theme =>
   createTheme({
