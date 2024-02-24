@@ -1,37 +1,59 @@
 // theme.ts
 import { createTheme, Theme } from '@mui/material'
+// colorTokens.ts
+import { colorData } from '@/utils/colorToken'
+import { pink, blue, amber, grey, orange } from '@mui/material/colors'
 
 export const theme = (mode: 'light' | 'dark'): Theme =>
   createTheme({
     palette: {
       mode,
       primary: {
-        main: '#3f51b5',
-        light: '#757de8',
+        main:
+          mode === 'light' ? colorData.primary.main : colorData.primary.light,
+        light:
+          mode === 'light'
+            ? colorData.primary.lighter
+            : colorData.primary.light,
+        dark:
+          mode === 'light' ? colorData.primary.dark : colorData.primary.dark,
       },
       secondary: {
-        main: '#f50057',
-        light: '#ff4081',
+        main:
+          mode === 'light'
+            ? colorData.secondary.main
+            : colorData.secondary.light,
+        light:
+          mode === 'light'
+            ? colorData.secondary.lighter
+            : colorData.secondary.light,
+        dark:
+          mode === 'light'
+            ? colorData.secondary.dark
+            : colorData.secondary.dark,
       },
       error: {
-        main: mode === 'light' ? '#f44336' : '#f49346',
-        light: mode === 'light' ? '#e57373' : '#f44336',
+        main: mode === 'light' ? colorData.error.main : colorData.error.dark,
+        light:
+          mode === 'light' ? colorData.error.lighter : colorData.error.light,
+        dark: mode === 'light' ? colorData.error.dark : colorData.error.dark,
       },
       info: {
-        main: '#2196f3',
-        light: mode === 'light' ? '#c5d9ea' : '#3e4953',
+        main: mode === 'light' ? colorData.info.main : colorData.info.dark,
+        light: mode === 'light' ? colorData.info.light : colorData.info.light,
+        dark: mode === 'light' ? colorData.info.dark : colorData.info.dark,
       },
       background: {
-        default: mode === 'light' ? '#ffffff' : '#212121',
-        paper: mode === 'light' ? '#ffffff' : '#262626',
+        default: mode === 'light' ? '#f9f9f9' : '#121212',
+        paper: mode === 'light' ? '#ffffff' : '#212121',
       },
       text: {
-        primary: mode === 'light' ? '#404040' : '#f9f9f9',
-        secondary: mode === 'light' ? '#757575' : '#f5f5f5',
+        primary: mode === 'light' ? '#212121' : '#f9f9f9',
+        secondary: mode === 'light' ? '#757575' : '#f9f9f9',
       },
       common: {
-        black: '#212121',
-        white: '#f9f9f9',
+        black: '#234',
+        white: '#fff',
       },
     },
     typography: {

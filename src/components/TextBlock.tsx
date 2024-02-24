@@ -23,9 +23,9 @@ const TextBlockWrapper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#212121' : '#fcfcfc',
   padding: '8px 16px',
   marginBottom: '8px',
-  '&:last-child': {
-    marginBottom: 0,
-  },
+  // '&:last-child': {
+  //   marginBottom: 0,
+  // },
 }))
 
 const CopyButton = styled('button')(({ theme }) => ({
@@ -47,10 +47,19 @@ const Head4 = styled('h4')(({ theme }) => ({
   borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
   width: 'fit-content',
   paddingBottom: '2px',
+  small: {
+    color: theme.palette.text.secondary,
+    fontWeight: 'normal',
+  },
 }))
 
 const Small = styled('small')(() => ({
   fontSize: '12px',
+}))
+
+const SpanStyled = styled('span')(({ theme }) => ({
+  color: theme.palette.success.main,
+  fontWeight: 'bold',
 }))
 
 const TextBlock: React.FC<TextBlockProps> = ({
@@ -84,6 +93,13 @@ const TextBlock: React.FC<TextBlockProps> = ({
     }
   }, [showTooltip])
 
+  const Quote = <SpanStyled>{'"'}</SpanStyled>
+  const QuoteColon = (
+    <SpanStyled>
+      {'"'}: {'"'}
+    </SpanStyled>
+  )
+
   return (
     <>
       <TextBlockWrapper>
@@ -91,19 +107,19 @@ const TextBlock: React.FC<TextBlockProps> = ({
           {title} <Small>{subtitle}</Small>
         </Head4>
         {content && result && (
-          <Box>
+          <Box p={1.5} lineHeight={1.8}>
             <FlexBox>
-              {'"'}
+              {Quote}
               {formattedContent}
-              {'"'}: {'"'}
+              {QuoteColon}
               {result}
-              {'"'}
+              {Quote}
               <br />
-              {'"'}
+              {Quote}
               {formattedContent}
-              {'"'}: {'"'}
+              {QuoteColon}
               {content.toLocaleLowerCase()}
-              {'"'}
+              {Quote}
             </FlexBox>
 
             <Tooltip title="Copied!" open={showTooltip}>
@@ -111,8 +127,8 @@ const TextBlock: React.FC<TextBlockProps> = ({
                 sx={{
                   width: 'fit-content',
                   position: 'absolute',
-                  top: 0,
-                  right: 0,
+                  top: -4,
+                  right: -4,
                 }}
               >
                 <CopyButton onClick={() => handleCopy(result, content)}>

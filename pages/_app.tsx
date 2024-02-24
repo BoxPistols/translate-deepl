@@ -1,8 +1,12 @@
 // _app.tsx
 import React, { useEffect } from 'react'
 import { ThemeProvider, CssBaseline } from '@mui/material'
-import { theme } from '@/theme'
 import '@/styles/globals.css'
+import { theme } from '@/theme'
+
+import { CacheProvider } from '@emotion/react'
+import { StyledEngineProvider } from '@mui/material/styles'
+import createCache from '@emotion/cache'
 
 function MyApp({ Component, pageProps }) {
   const [mode, setMode] = React.useState<'light' | 'dark'>('light')
@@ -23,11 +27,21 @@ function MyApp({ Component, pageProps }) {
     }
   }, [])
 
+  const cache = createCache({
+    key: 'em',
+    prepend: true,
+    stylisPlugins: [],
+  })
+
   return (
-    <ThemeProvider theme={theme(mode)}>
-      <CssBaseline />
-      <Component {...pageProps} toggleTheme={toggleTheme} />
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <CacheProvider value={cache}>
+        <ThemeProvider theme={theme(mode)}>
+          <CssBaseline />
+          <Component {...pageProps} toggleTheme={toggleTheme} />
+        </ThemeProvider>
+      </CacheProvider>
+    </StyledEngineProvider>
   )
 }
 
