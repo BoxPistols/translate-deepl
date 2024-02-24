@@ -18,11 +18,12 @@ interface TextBlockProps {
 const TextBlockWrapper = styled(Paper)(({ theme }) => ({
   position: 'relative',
   borderRadius: '4px',
-  border: '1px solid',
-  borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
-  backgroundColor: theme.palette.mode === 'dark' ? '#212121' : '#fcfcfc',
   padding: '8px 16px',
   marginBottom: '8px',
+  backgroundColor: theme.palette.mode === 'dark' ? '#212121' : '#fcfcfc',
+  border: '1px solid',
+  borderColor: theme.palette.secondary.light,
+  boxShadow: '6px 6px 12px 0 rgba(13, 31, 88, 0.1)',
   // '&:last-child': {
   //   marginBottom: 0,
   // },
@@ -36,17 +37,20 @@ const CopyButton = styled('button')(({ theme }) => ({
   fontSize: '12px',
   cursor: 'pointer',
   borderRadius: '4px',
+  fontWeight: 500,
+  '&:hover': {
+    backgroundColor: theme.palette.primary.main,
+  },
 }))
 
 const Head4 = styled('h4')(({ theme }) => ({
-  fontSize: '16px',
-  fontWeight: 'bold',
-  margin: 0,
-  marginBottom: '6px',
-  borderBottom: '1px solid ',
-  borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
+  fontSize: '1.5rem',
+  fontWeight: 'normal',
+  margin: 8,
+  marginBottom: 0,
+  // borderBottom: '1px solid ',
+  // borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
   width: 'fit-content',
-  paddingBottom: '2px',
   small: {
     color: theme.palette.text.secondary,
     fontWeight: 'normal',
@@ -58,8 +62,8 @@ const Small = styled('small')(() => ({
 }))
 
 const SpanStyled = styled('span')(({ theme }) => ({
-  color: theme.palette.success.main,
-  fontWeight: 'bold',
+  color: theme.palette.success.light,
+  fontWeight: '700',
 }))
 
 const TextBlock: React.FC<TextBlockProps> = ({
@@ -122,16 +126,25 @@ const TextBlock: React.FC<TextBlockProps> = ({
               {Quote}
             </FlexBox>
 
-            <Tooltip title="Copied!" open={showTooltip}>
+            <Tooltip
+              title="Copied!"
+              open={showTooltip}
+              placement="top-end"
+              arrow
+            >
               <FlexBox
                 sx={{
                   width: 'fit-content',
                   position: 'absolute',
-                  top: -4,
-                  right: -4,
+                  top: -8,
+                  right: -6,
+                  boxShadow: '8px 8px 12px 0 rgba(13, 31, 88, 0.2)',
                 }}
               >
-                <CopyButton onClick={() => handleCopy(result, content)}>
+                <CopyButton
+                  onClick={() => handleCopy(result, content)}
+                  sx={{ px: 3, py: 1 }}
+                >
                   Copy
                 </CopyButton>
               </FlexBox>

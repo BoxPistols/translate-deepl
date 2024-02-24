@@ -55,14 +55,14 @@ export default function Home({ toggleTheme }) {
 
       <Container maxWidth="xl">
         <div className={styles.container}>
+          <TitleSet
+            component="h1"
+            variant="h2"
+            headingText="Deep Translate for i18n & json"
+            subtitleText="日本語から英語に翻訳と同時に、日英セットで各json形式で書き出されます"
+          />
           <main className={styles.main}>
-            <TitleSet
-              component="h1"
-              variant="h3"
-              headingText="Deep Translate for i18n & json"
-              subtitleText="日本語から英語に翻訳と同時に、日英セットで各json形式で書き出されます"
-            />
-            <Box my={2}>
+            <Box my={1}>
               <Translate />
             </Box>
           </main>

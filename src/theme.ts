@@ -143,7 +143,7 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
     components: {
       MuiButtonBase: {
         defaultProps: {
-          disableRipple: true, // No more ripple, on the whole application 💣!
+          disableRipple: false, // No more ripple, on the whole application 💣!
         },
       },
       MuiButton: {
@@ -185,7 +185,7 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
       MuiCssBaseline: {
         styleOverrides: {
           body: {
-            backgroundColor: mode === 'light' ? '#ffffff' : '#212121',
+            backgroundColor: mode === 'light' ? '#ffffff' : '#2a3943',
           },
         },
       },
