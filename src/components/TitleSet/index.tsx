@@ -15,31 +15,11 @@ import { PageTitleWrapper } from '@/components/PageTitleWrapper'
  */
 // INFO: *variantのh1はMainTitleSetでのみ設置可能としたいです
 interface TitleSetProps {
-  variant?:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'body1'
-    | 'body2'
-    | 'button'
-    | 'caption'
-    | 'overline'
-    | 'inherit'
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2' | 'button' | 'caption' | 'overline' | 'inherit'
   component?: ElementType
   headingText?: string
   subtitleText?: string
-  variantSubTitle?:
-    | 'subtitle1'
-    | 'subtitle2'
-    | 'body1'
-    | 'body2'
-    | 'button'
-    | 'caption'
-    | 'overline'
-    | 'inherit'
+  variantSubTitle?: 'subtitle1' | 'subtitle2' | 'body1' | 'body2' | 'button' | 'caption' | 'overline' | 'inherit'
   additionalProps?: JSX.Element
   sxHeader?: SxProps
   sxSubTitle?: SxProps
@@ -76,13 +56,7 @@ export const TitleSet = ({
         }}
       >
         <PageTitleWrapper>
-          <Grid
-            container
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ mb: 1 }}
-            mb={1}
-          >
+          <Grid container justifyContent="space-between" alignItems="center" sx={{ mb: 1 }} mb={1}>
             <Grid item>
               {/* 見出し */}
               <Typography

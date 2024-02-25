@@ -58,17 +58,9 @@ const SpanStyled = styled('span')(({ theme }) => ({
   fontWeight: '700',
 }))
 
-const TextBlock: React.FC<TextBlockProps> = ({
-  title,
-  subtitle,
-  content,
-  result,
-  noSymbols,
-}) => {
+const TextBlock: React.FC<TextBlockProps> = ({ title, subtitle, content, result, noSymbols }) => {
   const processedContent = content.replace(/ /g, '_')
-  const formattedContent = noSymbols
-    ? processedContent.replace(/[-_]/g, '')
-    : processedContent
+  const formattedContent = noSymbols ? processedContent.replace(/[-_]/g, '') : processedContent
 
   const [showTooltip, setShowTooltip] = React.useState(false)
 
@@ -117,12 +109,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
               {Quote}
             </FlexBox>
 
-            <Tooltip
-              title="Copied!"
-              open={showTooltip}
-              placement="top-end"
-              arrow
-            >
+            <Tooltip title="Copied!" open={showTooltip} placement="top-end" arrow>
               <FlexBox
                 sx={{
                   width: 'fit-content',
@@ -132,10 +119,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
                   boxShadow: '8px 8px 12px 0 rgba(13, 31, 88, 0.2)',
                 }}
               >
-                <CopyButton
-                  onClick={() => handleCopy(result, content)}
-                  sx={{ px: 3, py: 1 }}
-                >
+                <CopyButton onClick={() => handleCopy(result, content)} sx={{ px: 3, py: 1 }}>
                   Copy
                 </CopyButton>
               </FlexBox>

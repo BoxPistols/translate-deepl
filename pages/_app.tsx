@@ -13,11 +13,9 @@ function MyApp({ Component, pageProps }) {
   const [mode, setMode] = useState<'light' | 'dark'>('light')
 
   const toggleTheme = () => {
-    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))
     // 条件分岐でsetItemを使う
-    mode === 'dark'
-      ? localStorage.setItem('DeepL-API_Mode', 'light')
-      : localStorage.setItem('DeepL-API_Mode', 'dark')
+    mode === 'dark' ? localStorage.setItem('DeepL-API_Mode', 'light') : localStorage.setItem('DeepL-API_Mode', 'dark')
   }
 
   // ローカルストレージに保存

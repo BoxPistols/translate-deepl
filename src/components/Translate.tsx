@@ -1,13 +1,5 @@
 import { useState, FormEvent, useEffect, useRef } from 'react'
-import {
-  Box,
-  Button,
-  Paper,
-  TextField,
-  Typography,
-  useTheme,
-  styled,
-} from '@mui/material'
+import { Box, Button, Paper, TextField, Typography, useTheme, styled } from '@mui/material'
 import { translateText } from '@/api/translateAPI'
 
 import FlexBox from '@/utils/FlexBox'
@@ -28,13 +20,9 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     gridTemplateColumns: 'repeat(2, 1fr)',
   },
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? theme.palette.grey[800]
-      : theme.palette.grey[100],
+  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[100],
   border: '1px solid',
-  borderColor:
-    theme.palette.mode === 'dark' ? 'inherit' : theme.palette.grey[300],
+  borderColor: theme.palette.mode === 'dark' ? 'inherit' : theme.palette.grey[300],
 }))
 
 export const Translate = () => {
@@ -89,23 +77,13 @@ export const Translate = () => {
           top: 44,
           left: 0,
           zIndex: 1,
-          backgroundColor:
-            theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'white',
+          backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'white',
           border: '1px solid',
-          borderColor:
-            theme.palette.mode === 'dark' ? 'inherit' : theme.palette.grey[300],
+          borderColor: theme.palette.mode === 'dark' ? 'inherit' : theme.palette.grey[300],
         }}
       >
         <form onSubmit={handleTranslate} ref={formRef}>
-          <FlexBox
-            fx
-            fw
-            jc_sp_bw
-            ai_c
-            gap={2}
-            p={3}
-            sx={{ display: { xs: 'block', md: 'flex' } }}
-          >
+          <FlexBox fx fw jc_sp_bw ai_c gap={2} p={3} sx={{ display: { xs: 'block', md: 'flex' } }}>
             <Box
               display={{ xs: 'block', md: 'flex' }}
               flexWrap={{
@@ -119,7 +97,7 @@ export const Translate = () => {
                 label={'翻訳したい日本語を入れてください'}
                 type="text"
                 value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
+                onChange={e => setInputText(e.target.value)}
                 // InputLabelProps={{ shrink: false }}
                 placeholder="翻訳キーワード"
                 size="small"
@@ -133,11 +111,8 @@ export const Translate = () => {
                   maxWidth: { xs: '100%' },
                   '.MuiInputBase-input:-webkit-autofill': {
                     WebkitBoxShadow:
-                      theme.palette.mode === 'dark'
-                        ? '0 0 0 1000px #222 inset'
-                        : '0 0 0 1000px white inset',
-                    WebkitTextFillColor:
-                      theme.palette.mode === 'dark' ? '#fff' : '#000',
+                      theme.palette.mode === 'dark' ? '0 0 0 1000px #222 inset' : '0 0 0 1000px white inset',
+                    WebkitTextFillColor: theme.palette.mode === 'dark' ? '#fff' : '#000',
                     CaretColor: theme.palette.mode === 'dark' ? '#fff' : '#000',
                   },
                 }}
@@ -173,10 +148,7 @@ export const Translate = () => {
 
           {helperText && (
             <FlexBox fx jc_e mt={0.5}>
-              <Box
-                display={{ xs: 'block', md: 'flex' }}
-                justifyContent={{ md: 'center' }}
-              >
+              <Box display={{ xs: 'block', md: 'flex' }} justifyContent={{ md: 'center' }}>
                 <Typography
                   variant="caption"
                   m={0.5}

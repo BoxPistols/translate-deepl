@@ -15,19 +15,13 @@ interface SampleFormInput {
 
 // バリデーションルール
 const schema = yup.object({
-  email: yup
-    .string()
-    .required('必須だよ')
-    .email('正しいメールアドレス入力してね'),
+  email: yup.string().required('必須だよ').email('正しいメールアドレス入力してね'),
   name: yup.string().required('必須だよ'),
   password: yup
     .string()
     .required('必須だよ')
     .min(6, '少ないよ')
-    .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
-      'パスワード弱いよ',
-    ),
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/, 'パスワード弱いよ'),
 })
 
 function ReactHookForm() {
@@ -40,7 +34,7 @@ function ReactHookForm() {
   })
 
   // フォーム送信時の処理
-  const onSubmit: SubmitHandler<SampleFormInput> = (data) => {
+  const onSubmit: SubmitHandler<SampleFormInput> = data => {
     // バリデーションチェックOK！なときに行う処理を追加
     console.log(data)
   }
@@ -79,12 +73,7 @@ function ReactHookForm() {
           error={'other' in errors}
           helperText={errors.other?.message}
         />
-        <Button
-          color="primary"
-          variant="contained"
-          size="large"
-          onClick={handleSubmit(onSubmit)}
-        >
+        <Button color="primary" variant="contained" size="large" onClick={handleSubmit(onSubmit)}>
           作成
         </Button>
       </Stack>

@@ -26,16 +26,8 @@ export const ToggleTheme = ({ toggleTheme }) => {
         onClick={toggleTheme}
       >
         {/* // ダークモード切り替えボタン */}
-        <IconButton
-          sx={{ ml: 1 }}
-          onClick={colorMode.toggleColorMode}
-          color="inherit"
-        >
-          {theme.palette.mode === 'dark' ? (
-            <Brightness7Icon />
-          ) : (
-            <Brightness4Icon />
-          )}
+        <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
         <Typography variant="caption" mr={1}>
           {theme.palette.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}

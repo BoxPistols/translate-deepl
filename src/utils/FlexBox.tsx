@@ -64,7 +64,6 @@ const FlexBox = ({
                         : undefined || jc_fs
                           ? 'flex-start'
                           : undefined
-
       }
       flexDirection={fd_c ? 'column' : undefined || fx_r ? 'row' : undefined}
       flexWrap={fw ? 'wrap' : undefined || nw ? 'nowrap' : undefined}

@@ -53,33 +53,18 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
     palette: {
       mode,
       primary: {
-        main:
-          mode === 'light' ? colorData.primary.main : colorData.primary.light,
-        light:
-          mode === 'light'
-            ? colorData.primary.lighter
-            : colorData.primary.light,
-        dark:
-          mode === 'light' ? colorData.primary.dark : colorData.primary.dark,
+        main: mode === 'light' ? colorData.primary.main : colorData.primary.light,
+        light: mode === 'light' ? colorData.primary.lighter : colorData.primary.light,
+        dark: mode === 'light' ? colorData.primary.dark : colorData.primary.dark,
       },
       secondary: {
-        main:
-          mode === 'light'
-            ? colorData.secondary.main
-            : colorData.secondary.light,
-        light:
-          mode === 'light'
-            ? colorData.secondary.lighter
-            : colorData.secondary.light,
-        dark:
-          mode === 'light'
-            ? colorData.secondary.dark
-            : colorData.secondary.dark,
+        main: mode === 'light' ? colorData.secondary.main : colorData.secondary.light,
+        light: mode === 'light' ? colorData.secondary.lighter : colorData.secondary.light,
+        dark: mode === 'light' ? colorData.secondary.dark : colorData.secondary.dark,
       },
       error: {
         main: mode === 'light' ? colorData.error.main : colorData.error.dark,
-        light:
-          mode === 'light' ? colorData.error.lighter : colorData.error.light,
+        light: mode === 'light' ? colorData.error.lighter : colorData.error.light,
         dark: mode === 'light' ? colorData.error.dark : colorData.error.dark,
       },
       info: {
@@ -242,8 +227,7 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
         styleOverrides: {
           root: {
             height: 48,
-            backgroundColor:
-              mode === 'light' ? colorData.grey[100] : colorData.grey[900],
+            backgroundColor: mode === 'light' ? colorData.grey[100] : colorData.grey[900],
           },
         },
       },
@@ -263,8 +247,7 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
       MuiCssBaseline: {
         styleOverrides: {
           body: {
-            color:
-              mode === 'light' ? colorData.primary.dark : colorData.grey[100],
+            color: mode === 'light' ? colorData.primary.dark : colorData.grey[100],
             backgroundColor: mode === 'light' ? '#f9f9f9' : '#121212',
           },
         },
