@@ -15,39 +15,39 @@ export const transformText = (str: string, type: TextTransformType): string => {
   if (typeof str !== 'string' || !str) return str // 空文字列の場合はそのまま返す
 
   switch (type) {
-    case 'capitalize':
-      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() // 先頭のみ大文字にする
+  case 'capitalize':
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() // 先頭のみ大文字にする
 
-    case 'lowerCamelCase':
-      return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
-        if (+match === 0) return ''
-        return index === 0 ? match.toLowerCase() : match.toUpperCase() // 先頭のみ小文字にする
-      })
+  case 'lowerCamelCase':
+    return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+      if (+match === 0) return ''
+      return index === 0 ? match.toLowerCase() : match.toUpperCase() // 先頭のみ小文字にする
+    })
 
-    case 'upperCamelCase':
-      return str.replace(
-        /(?:^\w|[A-Z]|\b\w|\s+)/g,
-        (match) =>
-          match.charAt(0).toUpperCase() + match.substring(1).toLowerCase(),
-      )
+  case 'upperCamelCase':
+    return str.replace(
+      /(?:^\w|[A-Z]|\b\w|\s+)/g,
+      (match) =>
+        match.charAt(0).toUpperCase() + match.substring(1).toLowerCase(),
+    )
 
-    case 'upperCamelSnake':
-      return str.replace(
-        /(?:^\w|[A-Z]|\b\w|\s+)/g,
-        (match) => match.charAt(0).toUpperCase().replace(/\s+/g, '_'), // 単語ごとの先頭のみ大文字にする + スネークケース
-      )
+  case 'upperCamelSnake':
+    return str.replace(
+      /(?:^\w|[A-Z]|\b\w|\s+)/g,
+      (match) => match.charAt(0).toUpperCase().replace(/\s+/g, '_'), // 単語ごとの先頭のみ大文字にする + スネークケース
+    )
 
-    case 'allLowerCase':
-      return str.toLowerCase() // 全て小文字にする
+  case 'allLowerCase':
+    return str.toLowerCase() // 全て小文字にする
 
-    case 'kebabCase':
-      return str.replace(/\s+/g, '-').toLowerCase() // ケバブケース
+  case 'kebabCase':
+    return str.replace(/\s+/g, '-').toLowerCase() // ケバブケース
 
-    case 'snakeCase':
-      return str.replace(/\s+/g, '_').toLowerCase() // スネークケース
+  case 'snakeCase':
+    return str.replace(/\s+/g, '_').toLowerCase() // スネークケース
 
-    default:
-      return str // どれにも当てはまらない場合はそのまま返す
+  default:
+    return str // どれにも当てはまらない場合はそのまま返す
   }
 }
 
