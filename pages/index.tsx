@@ -1,21 +1,12 @@
 import Head from 'next/head'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import { Translate } from '@/components/Translate'
 import styles from '../src/styles/Home.module.css'
 import { TitleSet } from '@/components/TitleSet'
-import IconButton from '@mui/material/IconButton'
-import { useTheme } from '@mui/material/styles'
-import Brightness4Icon from '@mui/icons-material/Brightness4'
-import Brightness7Icon from '@mui/icons-material/Brightness7'
 import React from 'react'
-import FlexBox from '@/utils/FlexBox'
-
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} })
+import { ToggleTheme } from './ToggleTheme'
 
 export default function Home({ toggleTheme }) {
-  const theme = useTheme()
-  const colorMode = React.useContext(ColorModeContext)
-
   return (
     <>
       <Head>
@@ -25,32 +16,7 @@ export default function Home({ toggleTheme }) {
       </Head>
 
       <header>
-        <FlexBox
-          fx
-          ai_c
-          jc_e
-          height={32}
-          pt={2}
-          px={1}
-          width={'100%'}
-          onClick={toggleTheme}
-        >
-          {/* // ダークモード切り替えボタン */}
-          <IconButton
-            sx={{ ml: 1 }}
-            onClick={colorMode.toggleColorMode}
-            color="inherit"
-          >
-            {theme.palette.mode === 'dark' ? (
-              <Brightness7Icon />
-            ) : (
-              <Brightness4Icon />
-            )}
-          </IconButton>
-          <Typography variant="caption" mr={1}>
-            {theme.palette.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
-          </Typography>
-        </FlexBox>
+        <ToggleTheme toggleTheme={toggleTheme} />
       </header>
 
       <Container maxWidth="xl">
@@ -58,7 +24,8 @@ export default function Home({ toggleTheme }) {
           <TitleSet
             component="h1"
             variant="h2"
-            headingText="Deep Translate for i18n & json"
+            // headingText="Deep Translate for i18n & json"
+            headingText=""
             subtitleText="日本語から英語に翻訳と同時に、日英セットで各json形式で書き出されます"
           />
           <main className={styles.main}>

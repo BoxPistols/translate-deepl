@@ -1,5 +1,5 @@
 // _app.tsx
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ThemeProvider, CssBaseline } from '@mui/material'
 import '@/styles/globals.css'
 import { theme } from '@/theme'
@@ -7,9 +7,10 @@ import { theme } from '@/theme'
 import { CacheProvider } from '@emotion/react'
 import { StyledEngineProvider } from '@mui/material/styles'
 import createCache from '@emotion/cache'
+import { AppBarHeader } from '@/content/AppBar'
 
 function MyApp({ Component, pageProps }) {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light')
+  const [mode, setMode] = useState<'light' | 'dark'>('light')
 
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
@@ -38,7 +39,9 @@ function MyApp({ Component, pageProps }) {
       <CacheProvider value={cache}>
         <ThemeProvider theme={theme(mode)}>
           <CssBaseline />
-          <Component {...pageProps} toggleTheme={toggleTheme} />
+          <AppBarHeader>
+            <Component {...pageProps} toggleTheme={toggleTheme} />
+          </AppBarHeader>
         </ThemeProvider>
       </CacheProvider>
     </StyledEngineProvider>

@@ -1,8 +1,7 @@
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect, useRef } from 'react'
 import {
   Box,
   Button,
-  InputLabel,
   Paper,
   TextField,
   Typography,
@@ -29,6 +28,13 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     gridTemplateColumns: 'repeat(2, 1fr)',
   },
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? theme.palette.grey[800]
+      : theme.palette.grey[100],
+  border: '1px solid',
+  borderColor:
+    theme.palette.mode === 'dark' ? 'inherit' : theme.palette.grey[300],
 }))
 
 export const Translate = () => {
@@ -63,6 +69,14 @@ export const Translate = () => {
     setHelperText('')
   }
 
+  const formRef = useRef<HTMLFormElement>(null)
+
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.focus()
+    }
+  }, [])
+
   return (
     <>
       <Paper
@@ -71,9 +85,18 @@ export const Translate = () => {
           p: 2,
           boxShadow: '6px 6px 12px 0 rgba(13, 31, 88, 0.1)',
           borderRadius: 2,
+          position: 'sticky',
+          top: 44,
+          left: 0,
+          zIndex: 1,
+          backgroundColor:
+            theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'white',
+          border: '1px solid',
+          borderColor:
+            theme.palette.mode === 'dark' ? 'inherit' : theme.palette.grey[300],
         }}
       >
-        <form onSubmit={handleTranslate}>
+        <form onSubmit={handleTranslate} ref={formRef}>
           <FlexBox
             fx
             fw
@@ -93,25 +116,30 @@ export const Translate = () => {
             >
               <TextField
                 id="input-trans-word"
-                label={
-                  <InputLabel shrink>
-                    翻訳したい日本語を入れてください
-                  </InputLabel>
-                }
+                label={'翻訳したい日本語を入れてください'}
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                InputLabelProps={{ shrink: false }}
-                placeholder="翻訳したい日本語を入れてください"
+                // InputLabelProps={{ shrink: false }}
+                placeholder="翻訳キーワード"
                 size="small"
                 fullWidth
-                autoFocus
+                autoFocus={true}
                 sx={{
                   mr: { md: 0.25 },
                   mb: { xs: 1, md: 0 },
                   flexGrow: 1,
                   minWidth: { xs: '100%', md: '40vw', lg: '50vw' },
                   maxWidth: { xs: '100%' },
+                  '.MuiInputBase-input:-webkit-autofill': {
+                    WebkitBoxShadow:
+                      theme.palette.mode === 'dark'
+                        ? '0 0 0 1000px #222 inset'
+                        : '0 0 0 1000px white inset',
+                    WebkitTextFillColor:
+                      theme.palette.mode === 'dark' ? '#fff' : '#000',
+                    CaretColor: theme.palette.mode === 'dark' ? '#fff' : '#000',
+                  },
                 }}
               />
               <Button
@@ -123,7 +151,7 @@ export const Translate = () => {
                   boxShadow: '6px 6px 12px 0 rgba(13, 31, 88, 0.4)',
                 }}
               >
-                日{' -> '}英 変換
+                JA{' to '}EN / 変換
               </Button>
             </Box>
             <FlexBox fx jc_e>

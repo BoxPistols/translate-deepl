@@ -3,8 +3,53 @@ import { createTheme, Theme } from '@mui/material'
 // colorTokens.ts
 import { colorData } from '@/utils/colorToken'
 
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    display1: true
+    display2: true
+  }
+}
+
+export const breakpoints = {
+  values: {
+    xs: 0,
+    sm: 480,
+    md: 768,
+    lg: 1280,
+    xl: 1536,
+    xxl: 1920,
+  },
+}
+
+// ===== Typography =====
+const baseFontSize = 16
+
+const fontWeight = {
+  normal: 400,
+  medium: 500,
+  bold: 700,
+}
+const lineHeight = {
+  small: 1.5,
+  medium: 1.75,
+  large: 2.0,
+}
+
 export const theme = (mode: 'light' | 'dark'): Theme =>
   createTheme({
+    // ===== BreakPoint =====
+    // default: lg
+    breakpoints: {
+      values: {
+        xs: breakpoints.values.xs,
+        sm: breakpoints.values.sm,
+        md: breakpoints.values.md,
+        lg: breakpoints.values.lg,
+        xl: breakpoints.values.xl,
+      },
+    },
+
+    // Color
     palette: {
       mode,
       primary: {
@@ -51,14 +96,25 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
         secondary: mode === 'light' ? '#757575' : '#f9f9f9',
       },
       common: {
-        black: '#234',
+        black: '#29313c',
         white: '#fff',
       },
+      // mode === 'light' ? colorData.primary.dark : colorData.grey[100],
     },
+
     typography: {
-      fontFamily: 'Helvetica, sans-serif',
-      // WebkitFontSmoothing: 'antialiased',
-      // MozOsxFontSmoothing: 'grayscale',
+      allVariants: {
+        fontSize: baseFontSize,
+        fontWeight: fontWeight.normal,
+        lineHeight: lineHeight.medium,
+        // color: colorData.text.primary,
+        fontFamily:
+          ' "Inter", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", "BIZ UDPゴシック", "Noto Sans JP", Helvetica, Arial, sans-serif !important',
+        textTransform: 'inherit',
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'antialiased',
+      },
+
       fontWeightLight: 300,
       fontWeightRegular: 400,
       fontWeightMedium: 500,
@@ -119,13 +175,6 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
         fontSize: '0.875rem',
         lineHeight: 1.43,
       },
-      button: {
-        fontWeight: 500,
-        fontSize: '0.875rem',
-        lineHeight: 1.75,
-        letterSpacing: '0.02857em',
-        textTransform: 'inherit',
-      },
       caption: {
         fontWeight: 400,
         fontSize: '0.75rem',
@@ -138,8 +187,16 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
         letterSpacing: '0.08333em',
         textTransform: 'inherit',
       },
+      button: {
+        fontWeight: 500,
+        fontSize: '0.875rem',
+        lineHeight: 1.75,
+        letterSpacing: '0.02857em',
+        textTransform: 'inherit',
+        whiteSpace: 'nowrap',
+      },
     },
-
+    // Components
     components: {
       MuiButtonBase: {
         defaultProps: {
@@ -181,11 +238,34 @@ export const theme = (mode: 'light' | 'dark'): Theme =>
           },
         },
       },
-
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            height: 48,
+            backgroundColor:
+              mode === 'light' ? colorData.grey[100] : colorData.grey[900],
+          },
+        },
+      },
+      MuiToolbar: {
+        styleOverrides: {
+          root: {
+            minHeight: 48,
+            '@media(min-width:0px)': {
+              minHeight: 48,
+            },
+            '.MuiTypography-root': {
+              color: mode === 'light' ? colorData.primary.dark : '#f9f9f9',
+            },
+          },
+        },
+      },
       MuiCssBaseline: {
         styleOverrides: {
           body: {
-            backgroundColor: mode === 'light' ? '#ffffff' : '#2a3943',
+            color:
+              mode === 'light' ? colorData.primary.dark : colorData.grey[100],
+            backgroundColor: mode === 'light' ? '#f9f9f9' : '#121212',
           },
         },
       },

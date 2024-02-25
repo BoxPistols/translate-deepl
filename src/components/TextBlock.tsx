@@ -15,18 +15,12 @@ interface TextBlockProps {
   noSymbols?: boolean
 }
 
-const TextBlockWrapper = styled(Paper)(({ theme }) => ({
+const TextBlockWrapper = styled(Paper)(({}) => ({
   position: 'relative',
   borderRadius: '4px',
   padding: '8px 16px',
   marginBottom: '8px',
-  backgroundColor: theme.palette.mode === 'dark' ? '#212121' : '#fcfcfc',
-  border: '1px solid',
-  borderColor: theme.palette.secondary.light,
   boxShadow: '6px 6px 12px 0 rgba(13, 31, 88, 0.1)',
-  // '&:last-child': {
-  //   marginBottom: 0,
-  // },
 }))
 
 const CopyButton = styled('button')(({ theme }) => ({
@@ -48,8 +42,6 @@ const Head4 = styled('h4')(({ theme }) => ({
   fontWeight: 'normal',
   margin: 8,
   marginBottom: 0,
-  // borderBottom: '1px solid ',
-  // borderColor: theme.palette.mode === 'dark' ? '#121212' : '#ccc',
   width: 'fit-content',
   small: {
     color: theme.palette.text.secondary,
