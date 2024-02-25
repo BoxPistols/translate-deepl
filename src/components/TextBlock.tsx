@@ -3,6 +3,7 @@ import { styled } from '@mui/system'
 import copy from 'copy-to-clipboard'
 import Tooltip from '@mui/material/Tooltip'
 import FlexBox from '@/utils/FlexBox'
+import { transformText, TextTransformType } from '@/utils/stringConverters'
 
 import { Box, Paper } from '@mui/material'
 
@@ -11,7 +12,7 @@ interface TextBlockProps {
   subtitle: string
   content: string
   result: string
-  transformType: string
+  transformType: TextTransformType
   noSymbols?: boolean
 }
 
@@ -58,8 +59,8 @@ const SpanStyled = styled('span')(({ theme }) => ({
   fontWeight: '700',
 }))
 
-const TextBlock: React.FC<TextBlockProps> = ({ title, subtitle, content, result, noSymbols }) => {
-  const processedContent = content.replace(/ /g, '_')
+const TextBlock: React.FC<TextBlockProps> = ({ title, subtitle, content, result, noSymbols, transformType }) => {
+  const processedContent = transformText(content, transformType)
   const formattedContent = noSymbols ? processedContent.replace(/[-_]/g, '') : processedContent
 
   const [showTooltip, setShowTooltip] = React.useState(false)
