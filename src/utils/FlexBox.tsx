@@ -48,18 +48,23 @@ const FlexBox = ({
         jc_s
           ? 'flex-start'
           : undefined || jc_c
-          ? 'center'
-          : undefined || jc_e
-          ? 'flex-end'
-          : undefined || jc_sp_bw
-          ? 'space-between'
-          : undefined || jc_sp_ar
-          ? 'space-around'
-          : undefined || jc_sp_ev
-          ? 'space-evenly'
-          : undefined || jc_bl
-          ? 'baseline'
-          : undefined
+            ? 'center'
+            : undefined || jc_e
+              ? 'flex-end'
+              : undefined || jc_sp_bw
+                ? 'space-between'
+                : undefined || jc_sp_ar
+                  ? 'space-around'
+                  : undefined || jc_sp_ev
+                    ? 'space-evenly'
+                    : undefined || jc_bl
+                      ? 'baseline'
+                      : undefined || jc_sp_ec
+                        ? 'space-evenly'
+                        : undefined || jc_fs
+                          ? 'flex-start'
+                          : undefined
+
       }
       flexDirection={fd_c ? 'column' : undefined || fx_r ? 'row' : undefined}
       flexWrap={fw ? 'wrap' : undefined || nw ? 'nowrap' : undefined}

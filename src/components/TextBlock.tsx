@@ -3,7 +3,7 @@ import { styled } from '@mui/system'
 import copy from 'copy-to-clipboard'
 import Tooltip from '@mui/material/Tooltip'
 import FlexBox from '@/utils/FlexBox'
-import { transformText, TextTransformType } from '@/utils/stringConverters'
+
 import { Box, Paper } from '@mui/material'
 
 interface TextBlockProps {
@@ -11,11 +11,11 @@ interface TextBlockProps {
   subtitle: string
   content: string
   result: string
-  transformType: TextTransformType
+  transformType: string
   noSymbols?: boolean
 }
 
-const TextBlockWrapper = styled(Paper)(({}) => ({
+const TextBlockWrapper = styled(Paper)(() => ({
   position: 'relative',
   borderRadius: '4px',
   padding: '8px 16px',
@@ -63,10 +63,9 @@ const TextBlock: React.FC<TextBlockProps> = ({
   subtitle,
   content,
   result,
-  transformType,
   noSymbols,
 }) => {
-  const processedContent = transformText(content, transformType)
+  const processedContent = content.replace(/ /g, '_')
   const formattedContent = noSymbols
     ? processedContent.replace(/[-_]/g, '')
     : processedContent

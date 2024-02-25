@@ -4,7 +4,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import FlexBox from '@/utils/FlexBox'
 import { Typography } from '@mui/material'
-import { createContext, useContext } from 'react'
+import React, { createContext, useContext } from 'react'
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} })
 
