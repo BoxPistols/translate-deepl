@@ -65,8 +65,17 @@ const TextBlock: React.FC<TextBlockProps> = ({ title, subtitle, content, result,
 
   const [showTooltip, setShowTooltip] = React.useState(false)
 
+  // const handleCopy = (result: string, content: string) => {
+  //   const textToCopy = `"${formattedContent}": "${result}"\n"${formattedContent}": "${content}"`
+  //   copy(textToCopy)
+  //   setShowTooltip(true)
+  // }
+  // TODO: Capitalize Pattern
   const handleCopy = (result: string, content: string) => {
-    const textToCopy = `"${formattedContent}": "${result}"\n"${formattedContent}": "${content}"`
+    // `result` を小文字に変換し、それをクリップボードにコピーする
+    const textToCopy = `"${formattedContent}": "${
+      result.charAt(0).toUpperCase() + result.slice(1).toLowerCase()
+    }"\n"${formattedContent}": "${content.toLowerCase()}"`
     copy(textToCopy)
     setShowTooltip(true)
   }
