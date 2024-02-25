@@ -8,7 +8,7 @@ import React, { createContext, useContext } from 'react'
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} })
 
-export const ToggleTheme = ({ toggleTheme }) => {
+const ToggleTheme = ({ toggleTheme }) => {
   const theme = useTheme()
   const colorMode = useContext(ColorModeContext)
 
@@ -36,3 +36,4 @@ export const ToggleTheme = ({ toggleTheme }) => {
     </>
   )
 }
+export default ToggleTheme

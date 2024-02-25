@@ -4,7 +4,7 @@ import { Translate } from '@/components/Translate'
 import styles from '../src/styles/Home.module.css'
 import { TitleSet } from '@/components/TitleSet'
 import React from 'react'
-import { ToggleTheme } from './ToggleTheme'
+import ToggleTheme from './ToggleTheme'
 
 export default function Home({ toggleTheme }) {
   return (
