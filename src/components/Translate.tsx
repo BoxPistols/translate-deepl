@@ -9,9 +9,9 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   display: 'grid',
   // ブレークポイントごとのスタイルを設定
   gridTemplateColumns: '1fr', // デフォルト
-  gap: theme.spacing(3),
   marginBottom: theme.spacing(3),
-  padding: theme.spacing(3),
+  gap: theme.spacing(2),
+  padding: theme.spacing(2),
   boxShadow: '6px 6px 12px 0 rgba(13, 31, 88, 0.1)',
   borderRadius: theme.spacing(1),
   [theme.breakpoints.up('xs')]: {
@@ -107,8 +107,9 @@ export const Translate = () => {
                   mr: { md: 0.25 },
                   mb: { xs: 1, md: 0 },
                   flexGrow: 1,
-                  minWidth: { xs: '100%', md: '40vw', lg: '50vw' },
-                  maxWidth: { xs: '100%' },
+                  minWidth: { xs: '100%', md: '30vw' },
+                  maxWidth: { xs: '100%', md: 800 },
+                  width: 'auto',
                   '.MuiInputBase-input:-webkit-autofill': {
                     WebkitBoxShadow:
                       theme.palette.mode === 'dark' ? '0 0 0 1000px #222 inset' : '0 0 0 1000px white inset',

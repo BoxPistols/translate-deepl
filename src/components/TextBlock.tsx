@@ -48,10 +48,16 @@ const Head4 = styled('h4')(({ theme }) => ({
     color: theme.palette.text.secondary,
     fontWeight: 'normal',
   },
+  '@media (max-width: 640px)': {
+    fontSize: '1.2rem',
+  },
 }))
 
 const Small = styled('small')(() => ({
   fontSize: '12px',
+  '@media (max-width: 640px)': {
+    display: 'none!important',
+  },
 }))
 
 const SpanStyled = styled('span')(({ theme }) => ({

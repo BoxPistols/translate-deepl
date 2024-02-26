@@ -43,7 +43,7 @@ export const AppBarHeader = ({ children }: Props) => {
 
       {/* <AppBarSideNav open={open} /> */}
 
-      <Box component="main" sx={{ flexGrow: 1, mt: 2, py: 6, px: 4 }}>
+      <Box component="main" sx={{ flexGrow: 1, mt: { xs: 3, md: 2 }, py: 8, px: { xs: 1, md: 2, lg: 3 } }}>
         {children}
       </Box>
     </Box>
